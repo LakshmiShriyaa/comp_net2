@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<domain ASID="11537" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://totem.run.montefiore.ulg.ac.be/Schema/Domain-v1_2.xsd">
+    <info>
+        <title>Abilene Topology</title>
+        <date>2007-03-19</date>
+        <author>
+            Simon Balon (balon@run.montefiore.ulg.ac.be) - RUN - University of Liege
+        </author>
+        <description>
+            Topology of Abilene network - 10 April 2004
+            Generated from the data collected by Yin Zhang.
+            http://www.cs.utexas.edu/~yzhang/
+        </description>
+        <units>
+            <unit type="bandwidth" value="kbps"/>
+            <unit type="delay" value="ms"/>
+        </units>
+        <diff-serv>
+            <priority ct="0" id="0" preemption="0"/>
+        </diff-serv>
+    </info>
+    <topology>
+        <nodes>
+            <node id="ATLA-M5">
+                <description>Atlanta_GA</description>
+                <location latitude="-32.838192" longitude="-83.63889"/>
+                <interfaces>
+	                        <interface id="TO=ATLAng"/>
+	                        <interface id="FROM=ATLAng"/>
+                </interfaces>
+            </node>
+            <node id="ATLAng">
+                <description>Atlanta_GA</description>
+                <location latitude="-33.750000" longitude="-84.383300"/>
+                <interfaces>
+	                        <interface id="FROM=ATLA-M5"/>
+	                        <interface id="TO=ATLA-M5"/>
+	                        <interface id="TO=HSTNng"/>
+	                        <interface id="TO=IPLSng"/>
+	                        <interface id="TO=WASHng"/>
+	                        <interface id="FROM=HSTNng"/>
+	                        <interface id="FROM=IPLSng"/>
+	                        <interface id="FROM=WASHng"/>
+                </interfaces>
+            </node>
+            <node id="CHINng">
+                <description>Chicago_IL</description>
+                <location latitude="-41.833300" longitude="-87.616700"/>
+                <interfaces>
+	                        <interface id="TO=IPLSng"/>
+	                        <interface id="TO=NYCMng"/>
+	                        <interface id="FROM=IPLSng"/>
+	                        <interface id="FROM=NYCMng"/>
+                </interfaces>
+            </node>
+            <node id="DNVRng">
+                <description>Denver_CO</description>
+                <location latitude="-40.750000" longitude="-105.000000"/>
+                <interfaces>
+	                        <interface id="TO=KSCYng"/>
+	                        <interface id="TO=SNVAng"/>
+	                        <interface id="TO=STTLng"/>
+	                        <interface id="FROM=KSCYng"/>
+	                        <interface id="FROM=SNVAng"/>
+	                        <interface id="FROM=STTLng"/>
+                </interfaces>
+            </node>
+            <node id="HSTNng">
+                <description>Houston_TX</description>
+                <location latitude="-29.770031" longitude="-95.517364"/>
+                <interfaces>
+	                        <interface id="FROM=ATLAng"/>
+	                        <interface id="TO=ATLAng"/>
+	                        <interface id="TO=KSCYng"/>
+	                        <interface id="TO=LOSAng"/>
+	                        <interface id="FROM=KSCYng"/>
+	                        <interface id="FROM=LOSAng"/>
+                </interfaces>
+            </node>
+            <node id="IPLSng">
+                <description>Indianapolis_IN</description>
+                <location latitude="-39.780622" longitude="-86.159535"/>
+                <interfaces>
+	                        <interface id="FROM=ATLAng"/>
+	                        <interface id="FROM=CHINng"/>
+	                        <interface id="TO=ATLAng"/>
+	                        <interface id="TO=CHINng"/>
+	                        <interface id="TO=KSCYng"/>
+	                        <interface id="FROM=KSCYng"/>
+                </interfaces>
+            </node>
+            <node id="KSCYng">
+                <description>Kansas_City_MO</description>
+                <location latitude="-38.961694" longitude="-96.596704"/>
+                <interfaces>
+	                        <interface id="FROM=DNVRng"/>
+	                        <interface id="FROM=HSTNng"/>
+	                        <interface id="FROM=IPLSng"/>
+	                        <interface id="TO=DNVRng"/>
+	                        <interface id="TO=HSTNng"/>
+	                        <interface id="TO=IPLSng"/>
+                </interfaces>
+            </node>
+            <node id="LOSAng">
+                <description>Los_Angeles_CA</description>
+                <location latitude="-34.050000" longitude="-118.250000"/>
+                <interfaces>
+	                        <interface id="FROM=HSTNng"/>
+	                        <interface id="TO=HSTNng"/>
+	                        <interface id="TO=SNVAng"/>
+	                        <interface id="FROM=SNVAng"/>
+                </interfaces>
+            </node>
+            <node id="NYCMng">
+                <description>New_York_NY</description>
+                <location latitude="-40.783300" longitude="-73.966700"/>
+                <interfaces>
+	                        <interface id="FROM=CHINng"/>
+	                        <interface id="TO=CHINng"/>
+	                        <interface id="TO=WASHng"/>
+	                        <interface id="FROM=WASHng"/>
+                </interfaces>
+            </node>
+            <node id="SNVAng">
+                <description>Sunnyvale_CA</description>
+                <location latitude="-37.38575" longitude="-122.02553"/>
+                <interfaces>
+	                        <interface id="FROM=DNVRng"/>
+	                        <interface id="FROM=LOSAng"/>
+	                        <interface id="TO=DNVRng"/>
+	                        <interface id="TO=LOSAng"/>
+	                        <interface id="TO=STTLng"/>
+	                        <interface id="FROM=STTLng"/>
+                </interfaces>
+            </node>
+            <node id="STTLng">
+                <description>Seattle_WA</description>
+                <location latitude="-47.600000" longitude="-122.300000"/>
+                <interfaces>
+	                        <interface id="FROM=DNVRng"/>
+	                        <interface id="FROM=SNVAng"/>
+	                        <interface id="TO=DNVRng"/>
+	                        <interface id="TO=SNVAng"/>
+                </interfaces>
+            </node>
+            <node id="WASHng">
+                <description>Washington_DC</description>
+                <location latitude="-38.897303" longitude="-77.026842"/>
+                <interfaces>
+	                        <interface id="FROM=ATLAng"/>
+	                        <interface id="FROM=NYCMng"/>
+	                        <interface id="TO=ATLAng"/>
+	                        <interface id="TO=NYCMng"/>
+                </interfaces>
+            </node>
+        </nodes>
+        <links>
+            <link id="ATLA-M5,ATLAng">
+                <from if="TO=ATLAng" node="ATLA-M5"/>
+                <to if="FROM=ATLA-M5" node="ATLAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="ATLAng,ATLA-M5">
+                <from if="TO=ATLA-M5" node="ATLAng"/>
+                <to if="FROM=ATLAng" node="ATLA-M5"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="ATLAng,HSTNng">
+                <from if="TO=HSTNng" node="ATLAng"/>
+                <to if="FROM=ATLAng" node="HSTNng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="ATLAng,IPLSng">
+                <from if="TO=IPLSng" node="ATLAng"/>
+                <to if="FROM=ATLAng" node="IPLSng"/>
+                <bw>2480000</bw>
+            </link>
+            <link id="ATLAng,WASHng">
+                <from if="TO=WASHng" node="ATLAng"/>
+                <to if="FROM=ATLAng" node="WASHng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="CHINng,IPLSng">
+                <from if="TO=IPLSng" node="CHINng"/>
+                <to if="FROM=CHINng" node="IPLSng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="CHINng,NYCMng">
+                <from if="TO=NYCMng" node="CHINng"/>
+                <to if="FROM=CHINng" node="NYCMng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="DNVRng,KSCYng">
+                <from if="TO=KSCYng" node="DNVRng"/>
+                <to if="FROM=DNVRng" node="KSCYng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="DNVRng,SNVAng">
+                <from if="TO=SNVAng" node="DNVRng"/>
+                <to if="FROM=DNVRng" node="SNVAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="DNVRng,STTLng">
+                <from if="TO=STTLng" node="DNVRng"/>
+                <to if="FROM=DNVRng" node="STTLng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="HSTNng,ATLAng">
+                <from if="TO=ATLAng" node="HSTNng"/>
+                <to if="FROM=HSTNng" node="ATLAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="HSTNng,KSCYng">
+                <from if="TO=KSCYng" node="HSTNng"/>
+                <to if="FROM=HSTNng" node="KSCYng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="HSTNng,LOSAng">
+                <from if="TO=LOSAng" node="HSTNng"/>
+                <to if="FROM=HSTNng" node="LOSAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="IPLSng,ATLAng">
+                <from if="TO=ATLAng" node="IPLSng"/>
+                <to if="FROM=IPLSng" node="ATLAng"/>
+                <bw>2480000</bw>
+            </link>
+            <link id="IPLSng,CHINng">
+                <from if="TO=CHINng" node="IPLSng"/>
+                <to if="FROM=IPLSng" node="CHINng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="IPLSng,KSCYng">
+                <from if="TO=KSCYng" node="IPLSng"/>
+                <to if="FROM=IPLSng" node="KSCYng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="KSCYng,DNVRng">
+                <from if="TO=DNVRng" node="KSCYng"/>
+                <to if="FROM=KSCYng" node="DNVRng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="KSCYng,HSTNng">
+                <from if="TO=HSTNng" node="KSCYng"/>
+                <to if="FROM=KSCYng" node="HSTNng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="KSCYng,IPLSng">
+                <from if="TO=IPLSng" node="KSCYng"/>
+                <to if="FROM=KSCYng" node="IPLSng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="LOSAng,HSTNng">
+                <from if="TO=HSTNng" node="LOSAng"/>
+                <to if="FROM=LOSAng" node="HSTNng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="LOSAng,SNVAng">
+                <from if="TO=SNVAng" node="LOSAng"/>
+                <to if="FROM=LOSAng" node="SNVAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="NYCMng,CHINng">
+                <from if="TO=CHINng" node="NYCMng"/>
+                <to if="FROM=NYCMng" node="CHINng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="NYCMng,WASHng">
+                <from if="TO=WASHng" node="NYCMng"/>
+                <to if="FROM=NYCMng" node="WASHng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="SNVAng,DNVRng">
+                <from if="TO=DNVRng" node="SNVAng"/>
+                <to if="FROM=SNVAng" node="DNVRng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="SNVAng,LOSAng">
+                <from if="TO=LOSAng" node="SNVAng"/>
+                <to if="FROM=SNVAng" node="LOSAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="SNVAng,STTLng">
+                <from if="TO=STTLng" node="SNVAng"/>
+                <to if="FROM=SNVAng" node="STTLng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="STTLng,DNVRng">
+                <from if="TO=DNVRng" node="STTLng"/>
+                <to if="FROM=STTLng" node="DNVRng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="STTLng,SNVAng">
+                <from if="TO=SNVAng" node="STTLng"/>
+                <to if="FROM=STTLng" node="SNVAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="WASHng,ATLAng">
+                <from if="TO=ATLAng" node="WASHng"/>
+                <to if="FROM=WASHng" node="ATLAng"/>
+                <bw>9920000</bw>
+            </link>
+            <link id="WASHng,NYCMng">
+                <from if="TO=NYCMng" node="WASHng"/>
+                <to if="FROM=WASHng" node="NYCMng"/>
+                <bw>9920000</bw>
+            </link>
+        </links>
+    </topology>
+    <igp>
+        <links>
+            <link id="ATLA-M5,ATLAng">
+                <static>
+                    <metric>1</metric>
+                </static>
+            </link>
+            <link id="ATLAng,ATLA-M5">
+                <static>
+                    <metric>1</metric>
+                </static>
+            </link>
+            <link id="ATLAng,HSTNng">
+                <static>
+                    <metric>1176</metric>
+                </static>
+            </link>
+            <link id="ATLAng,IPLSng">
+                <static>
+                    <metric>587</metric>
+                </static>
+            </link>
+            <link id="ATLAng,WASHng">
+                <static>
+                    <metric>846</metric>
+                </static>
+            </link>
+            <link id="CHINng,IPLSng">
+                <static>
+                    <metric>260</metric>
+                </static>
+            </link>
+            <link id="CHINng,NYCMng">
+                <static>
+                    <metric>700</metric>
+                </static>
+            </link>
+            <link id="DNVRng,KSCYng">
+                <static>
+                    <metric>639</metric>
+                </static>
+            </link>
+            <link id="DNVRng,SNVAng">
+                <static>
+                    <metric>1295</metric>
+                </static>
+            </link>
+            <link id="DNVRng,STTLng">
+                <static>
+                    <metric>2095</metric>
+                </static>
+            </link>
+            <link id="HSTNng,ATLAng">
+                <static>
+                    <metric>1176</metric>
+                </static>
+            </link>
+            <link id="HSTNng,KSCYng">
+                <static>
+                    <metric>902</metric>
+                </static>
+            </link>
+            <link id="HSTNng,LOSAng">
+                <static>
+                    <metric>1893</metric>
+                </static>
+            </link>
+            <link id="IPLSng,ATLAng">
+                <static>
+                    <metric>587</metric>
+                </static>
+            </link>
+            <link id="IPLSng,CHINng">
+                <static>
+                    <metric>260</metric>
+                </static>
+            </link>
+            <link id="IPLSng,KSCYng">
+                <static>
+                    <metric>548</metric>
+                </static>
+            </link>
+            <link id="KSCYng,DNVRng">
+                <static>
+                    <metric>639</metric>
+                </static>
+            </link>
+            <link id="KSCYng,HSTNng">
+                <static>
+                    <metric>902</metric>
+                </static>
+            </link>
+            <link id="KSCYng,IPLSng">
+                <static>
+                    <metric>548</metric>
+                </static>
+            </link>
+            <link id="LOSAng,HSTNng">
+                <static>
+                    <metric>1893</metric>
+                </static>
+            </link>
+            <link id="LOSAng,SNVAng">
+                <static>
+                    <metric>366</metric>
+                </static>
+            </link>
+            <link id="NYCMng,CHINng">
+                <static>
+                    <metric>700</metric>
+                </static>
+            </link>
+            <link id="NYCMng,WASHng">
+                <static>
+                    <metric>233</metric>
+                </static>
+            </link>
+            <link id="SNVAng,DNVRng">
+                <static>
+                    <metric>1295</metric>
+                </static>
+            </link>
+            <link id="SNVAng,LOSAng">
+                <static>
+                    <metric>366</metric>
+                </static>
+            </link>
+            <link id="SNVAng,STTLng">
+                <static>
+                    <metric>861</metric>
+                </static>
+            </link>
+            <link id="STTLng,DNVRng">
+                <static>
+                    <metric>2095</metric>
+                </static>
+            </link>
+            <link id="STTLng,SNVAng">
+                <static>
+                    <metric>861</metric>
+                </static>
+            </link>
+            <link id="WASHng,ATLAng">
+                <static>
+                    <metric>846</metric>
+                </static>
+            </link>
+            <link id="WASHng,NYCMng">
+                <static>
+                    <metric>233</metric>
+                </static>
+            </link>
+        </links>
+    </igp>
+</domain>
