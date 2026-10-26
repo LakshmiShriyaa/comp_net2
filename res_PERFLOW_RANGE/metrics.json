@@ -1,0 +1,74 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "nodes": 23,
+    "window": 12,
+    "horizon": 4,
+    "times": "geant_times.npy",
+    "step_min": 15,
+    "season": 96,
+    "mask_diag": true,
+    "no_despike": false,
+    "scaling": "range",
+    "selection": "normalized_rmse",
+    "per_flow_selection": true,
+    "out": "res_PERFLOW_RANGE"
+  },
+  "selected_on_validation": {
+    "method": "per-flow validation normalized RMSE",
+    "median_features": 9,
+    "median_alpha": 1.0,
+    "validation_normalized_rmse": 0.06805570682928795,
+    "scale": "range",
+    "per_flow": true
+  },
+  "validation": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "ridge": {
+      "original_units": {
+        "MAE": 2370.120950527384,
+        "RMSE": 11920.489492095465,
+        "MAPE_%": 22.7436534643582
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02233814666305714,
+        "RMSE": 0.06805570682928795
+      }
+    }
+  },
+  "test": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "ridge": {
+      "original_units": {
+        "MAE": 2205.1801848477335,
+        "RMSE": 9921.244433422722,
+        "MAPE_%": 22.199978119259303
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022891991130995968,
+        "RMSE": 0.05893406984617436
+      }
+    }
+  },
+  "validation_candidate_count": 25
+}

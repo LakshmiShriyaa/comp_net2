@@ -1,0 +1,71 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "times": "geant_times.npy",
+    "nodes": 23,
+    "window": 12,
+    "horizon": 4,
+    "step_min": 15,
+    "season": 96,
+    "scale": "range",
+    "train_stride": 4,
+    "out": "res_TREE_RANGE"
+  },
+  "selected_on_validation": {
+    "config": {
+      "max_iter": 40,
+      "max_leaf_nodes": 7,
+      "min_samples_leaf": 40,
+      "l2_regularization": 1.0
+    },
+    "normalized_rmse": 0.08101195096969604
+  },
+  "validation": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "flow_tree": {
+      "original_units": {
+        "MAE": 2413.020263671875,
+        "RMSE": 12548.6845703125,
+        "MAPE_%": 23.799528121948242
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021893003955483437,
+        "RMSE": 0.08101195096969604
+      }
+    }
+  },
+  "test": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "flow_tree": {
+      "original_units": {
+        "MAE": 2084.68359375,
+        "RMSE": 9866.552734375,
+        "MAPE_%": 21.569515228271484
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021463800221681595,
+        "RMSE": 0.06242190673947334
+      }
+    }
+  }
+}

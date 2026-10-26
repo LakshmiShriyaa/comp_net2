@@ -1,0 +1,65 @@
+{
+  "selection": "per-OD lag count and ridge alpha selected by validation normalized RMSE after four-step recursive rollout",
+  "lag_counts": {
+    "1": 122,
+    "3": 47,
+    "6": 48,
+    "9": 56,
+    "12": 233
+  },
+  "alphas": {
+    "0.1": 239,
+    "1.0": 68,
+    "10.0": 74,
+    "100.0": 35,
+    "1000.0": 90
+  },
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "recursive_ridge": {
+      "original_units": {
+        "MAE": 2398.5284701005044,
+        "RMSE": 11913.11247067211,
+        "MAPE_%": 22.892213845342532
+      },
+      "normalized": {
+        "MAE": 0.022567603183829103,
+        "RMSE": 0.0680832523700287
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "recursive_ridge": {
+      "original_units": {
+        "MAE": 2230.15652746057,
+        "RMSE": 9921.406934968101,
+        "MAPE_%": 22.233022801343733
+      },
+      "normalized": {
+        "MAE": 0.023134151256709666,
+        "RMSE": 0.05820241420372701
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "nodes": 23,
+    "window": 12,
+    "epochs": 40,
+    "lr": 0.001,
+    "batch": 256,
+    "patience": 8,
+    "seed": 0,
+    "out": "res_A",
+    "residual": true,
+    "mask_diag": false,
+    "log": false,
+    "no_despike": false,
+    "skip_plain": false
+  },
+  "results": {
+    "Naive (last value)": {
+      "MAE": 1461.36572265625,
+      "RMSE": 8970.130859375,
+      "MAPE_%": 12.358793258666992
+    },
+    "Moving average (3)": {
+      "MAE": 1632.56494140625,
+      "RMSE": 9476.20703125,
+      "MAPE_%": 13.727852821350098
+    },
+    "Plain LSTM": {
+      "MAE": 1663.7957763671875,
+      "RMSE": 8972.7744140625,
+      "MAPE_%": 12.841206550598145
+    },
+    "CNN-LSTM": {
+      "MAE": 1501.2447509765625,
+      "RMSE": 8975.1669921875,
+      "MAPE_%": 12.435317039489746
+    }
+  }
+}

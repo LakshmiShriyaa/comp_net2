@@ -1,0 +1,73 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "nodes": 23,
+    "window": 12,
+    "horizon": 4,
+    "season": 96,
+    "times": "geant_times.npy",
+    "step_min": 15,
+    "epochs": 40,
+    "lr": 0.001,
+    "batch": 64,
+    "patience": 8,
+    "seed": 0,
+    "under_w": 3.0,
+    "out": "res_U3",
+    "shared": true,
+    "local_scale": true,
+    "residual": false,
+    "mask_diag": true,
+    "log": false,
+    "no_despike": false,
+    "skip_plain": true
+  },
+  "results": {
+    "Naive (last value)": {
+      "MAE": 1820.9593505859375,
+      "RMSE": 8771.7197265625,
+      "MAPE_%": 19.263734817504883
+    },
+    "Moving average (3)": {
+      "MAE": 1876.0587158203125,
+      "RMSE": 9092.9013671875,
+      "MAPE_%": 19.571123123168945
+    },
+    "Seasonal naive (96 ago)": {
+      "MAE": 3863.83642578125,
+      "RMSE": 20528.08203125,
+      "MAPE_%": 37.81278610229492
+    },
+    "Shared CNN-LSTM": {
+      "MAE": 1974.7186279296875,
+      "RMSE": 8856.14453125,
+      "MAPE_%": 19.70437240600586
+    }
+  },
+  "rmse_by_step": {
+    "Naive (last value)": [
+      6145.0849609375,
+      8207.802734375,
+      9531.1796875,
+      10573.49609375
+    ],
+    "Moving average (3)": [
+      7030.1005859375,
+      8608.35546875,
+      9722.16796875,
+      10614.9296875
+    ],
+    "Seasonal naive (96 ago)": [
+      20524.98046875,
+      20526.31640625,
+      20528.904296875,
+      20532.123046875
+    ],
+    "Shared CNN-LSTM": [
+      6496.42041015625,
+      8400.6416015625,
+      9539.1572265625,
+      10485.962890625
+    ]
+  }
+}

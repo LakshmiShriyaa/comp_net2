@@ -1,0 +1,68 @@
+{
+  "flags": {
+    "data": "abilene.npy",
+    "nodes": 12,
+    "window": 12,
+    "horizon": 4,
+    "times": null,
+    "step_min": 5,
+    "season": 288,
+    "mask_diag": true,
+    "no_despike": false,
+    "out": "res_ABILENE_AR"
+  },
+  "selected_on_validation": {
+    "features": 9,
+    "alpha": 0.1,
+    "validation_rmse": 22418.084473126626
+  },
+  "validation": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 3617.70654296875,
+        "RMSE": 26888.9453125,
+        "MAPE_%": 16.29570770263672
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02265443094074726,
+        "RMSE": 0.05194602161645889
+      }
+    },
+    "ridge": {
+      "original_units": {
+        "MAE": 3721.6962422983843,
+        "RMSE": 22418.084473126626,
+        "MAPE_%": 15.744599641493071
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021166286098917048,
+        "RMSE": 0.0432420394678678
+      }
+    }
+  },
+  "test": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 4451.03173828125,
+        "RMSE": 32313.41015625,
+        "MAPE_%": 17.771020889282227
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02936922386288643,
+        "RMSE": 0.07213056832551956
+      }
+    },
+    "ridge": {
+      "original_units": {
+        "MAE": 4798.141868969686,
+        "RMSE": 39225.05616786954,
+        "MAPE_%": 17.275891346352857
+      },
+      "per_pair_normalized": {
+        "MAE": 0.027396670008188066,
+        "RMSE": 0.06317077886488509
+      }
+    }
+  },
+  "validation_candidate_count": 25
+}

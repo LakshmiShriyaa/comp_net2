@@ -1,0 +1,51 @@
+{
+  "model": "existing H1 CNN-LSTM recursively rolled forward four times; fitted checkpoint fixed before this evaluation",
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "recursive_cnn": {
+      "original_units": {
+        "MAE": 2381.6650390625,
+        "RMSE": 12396.267578125,
+        "MAPE_%": 23.241668701171875
+      },
+      "normalized": {
+        "MAE": 0.022429510951042175,
+        "RMSE": 0.07788121700286865
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "recursive_cnn": {
+      "original_units": {
+        "MAE": 2237.09619140625,
+        "RMSE": 10397.236328125,
+        "MAPE_%": 21.9238224029541
+      },
+      "normalized": {
+        "MAE": 0.02331346645951271,
+        "RMSE": 0.06383606046438217
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "topology": "geant",
+    "edge_file": "geant_edges.txt",
+    "capacity": 1181952.125,
+    "capacity_calibration_file": "geant_final.npy",
+    "congestion_threshold": 0.7,
+    "proactive_threshold": 0.7,
+    "forecast_label": "Validation-selected four-model per-OD blend",
+    "capacity_source": "train-prefix calibration",
+    "last_observation_file": "res_FOUR_BLEND/last_observed_test.npy"
+  },
+  "routing": {
+    "static": {
+      "mean_max_link_util": 0.6861153841018677,
+      "p95_max_link_util": 0.9076420068740845,
+      "steps_with_congestion_%": 2.4359775140537163,
+      "overload_traffic_%": 0.03129646182060242,
+      "avg_flows_rerouted": 0.0,
+      "path_stretch": 1.0
+    },
+    "reactive (last matrix)": {
+      "mean_max_link_util": 0.6405560970306396,
+      "p95_max_link_util": 0.7830215096473694,
+      "steps_with_congestion_%": 0.6246096189881324,
+      "overload_traffic_%": 0.006264116615056992,
+      "avg_flows_rerouted": 2.249219237976265,
+      "path_stretch": 1.0218889713287354
+    },
+    "proactive (Validation-selected four-model per-OD blend)": {
+      "mean_max_link_util": 0.6441497802734375,
+      "p95_max_link_util": 0.7830215096473694,
+      "steps_with_congestion_%": 0.5621486570893192,
+      "overload_traffic_%": 0.006536576896905899,
+      "avg_flows_rerouted": 1.9787632729544036,
+      "path_stretch": 1.0192151069641113
+    },
+    "hybrid (max fcst, last)": {
+      "mean_max_link_util": 0.6384599804878235,
+      "p95_max_link_util": 0.7800231575965881,
+      "steps_with_congestion_%": 0.6246096189881324,
+      "overload_traffic_%": 0.00625613983720541,
+      "avg_flows_rerouted": 2.5802623360399752,
+      "path_stretch": 1.0233534574508667
+    },
+    "oracle (true matrix)": {
+      "mean_max_link_util": 0.6334760785102844,
+      "p95_max_link_util": 0.762949526309967,
+      "steps_with_congestion_%": 0.49968769519050593,
+      "overload_traffic_%": 0.005152975209057331,
+      "avg_flows_rerouted": 2.249219237976265,
+      "path_stretch": 1.0217931270599365
+    }
+  },
+  "detection": {
+    "last observed (4 step(s) old)": {
+      "link_load_RMSE_%cap": 3.1717448234558105,
+      "precision": 0.8140043763676149,
+      "recall": 0.8140043763676149,
+      "F1": 0.8140043763676149,
+      "true_congested_events": 1371
+    },
+    "Validation-selected four-model per-OD blend forecast": {
+      "link_load_RMSE_%cap": 2.8746609687805176,
+      "precision": 0.8761987794245859,
+      "recall": 0.7330415754923414,
+      "F1": 0.7982525814138206,
+      "true_congested_events": 1371
+    },
+    "hybrid (max fcst, last)": {
+      "link_load_RMSE_%cap": 3.11926531791687,
+      "precision": 0.7907921462423833,
+      "recall": 0.8519328956965718,
+      "F1": 0.8202247191011236,
+      "true_congested_events": 1371
+    }
+  }
+}

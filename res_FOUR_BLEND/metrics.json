@@ -1,0 +1,129 @@
+{
+  "selection": "per-OD weights selected on validation normalized squared error; 286-point four-model simplex grid (0.1 increments)",
+  "model_order": [
+    "cnn_lstm",
+    "perflow_mean_ridge",
+    "flow_tree",
+    "naive_last_value"
+  ],
+  "mean_weights": [
+    0.22094862163066864,
+    0.45533594489097595,
+    0.25454533100128174,
+    0.06916996091604233
+  ],
+  "validation": {
+    "cnn_lstm": {
+      "original_units": {
+        "MAE": 2322.52309599908,
+        "RMSE": 12253.277456279911,
+        "MAPE_%": 23.195246195599413
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02186780739341,
+        "RMSE": 0.07975832131145642
+      }
+    },
+    "perflow_mean_ridge": {
+      "original_units": {
+        "MAE": 2495.1662250107343,
+        "RMSE": 11967.476441812143,
+        "MAPE_%": 23.266194742384712
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02357815961868221,
+        "RMSE": 0.06879806093745075
+      }
+    },
+    "flow_tree": {
+      "original_units": {
+        "MAE": 2413.020222273049,
+        "RMSE": 12548.684688099083,
+        "MAPE_%": 23.799528733651016
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021893005031424814,
+        "RMSE": 0.08101195325232934
+      }
+    },
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2349.0107303530167,
+        "RMSE": 12732.372496110258,
+        "MAPE_%": 23.985400740741184
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02161077697190998,
+        "RMSE": 0.08540219934595232
+      }
+    },
+    "four_way_validation_blend": {
+      "original_units": {
+        "MAE": 2212.099939166466,
+        "RMSE": 11728.068829509892,
+        "MAPE_%": 21.64044084677352
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02092266981490503,
+        "RMSE": 0.06710544806180185
+      }
+    }
+  },
+  "test": {
+    "cnn_lstm": {
+      "original_units": {
+        "MAE": 2162.1288429525703,
+        "RMSE": 10147.16931664154,
+        "MAPE_%": 21.85786439419452
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022633323055109945,
+        "RMSE": 0.06372458705774271
+      }
+    },
+    "perflow_mean_ridge": {
+      "original_units": {
+        "MAE": 2283.1836170815272,
+        "RMSE": 9920.739323649914,
+        "MAPE_%": 22.421166911709573
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02362063648007696,
+        "RMSE": 0.05772498103878419
+      }
+    },
+    "flow_tree": {
+      "original_units": {
+        "MAE": 2084.683568533954,
+        "RMSE": 9866.552039856382,
+        "MAPE_%": 21.569516715107557
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02146380169563579,
+        "RMSE": 0.06242190624750057
+      }
+    },
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2183.258779658178,
+        "RMSE": 10573.496323358057,
+        "MAPE_%": 22.789908002971014
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02240885548662253,
+        "RMSE": 0.06892899272712717
+      }
+    },
+    "four_way_validation_blend": {
+      "original_units": {
+        "MAE": 2056.103248557665,
+        "RMSE": 9679.18044061086,
+        "MAPE_%": 21.12478256719096
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021524248557942424,
+        "RMSE": 0.056858784191935546
+      }
+    }
+  }
+}

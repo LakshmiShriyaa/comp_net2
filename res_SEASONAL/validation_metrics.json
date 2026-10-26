@@ -1,0 +1,62 @@
+{
+  "persistence": {
+    "original_units": {
+      "MAE": 2349.010986328125,
+      "RMSE": 12732.373046875,
+      "MAPE_%": 23.985401153564453
+    },
+    "per_pair_normalized": {
+      "MAE": 0.021610775962471962,
+      "RMSE": 0.08540219813585281
+    },
+    "normalized_rmse_improvement_vs_persistence_%": 0.0
+  },
+  "moving_average_3": {
+    "original_units": {
+      "MAE": 2347.142578125,
+      "RMSE": 12767.3134765625,
+      "MAPE_%": 23.96830177307129
+    },
+    "per_pair_normalized": {
+      "MAE": 0.021317819133400917,
+      "RMSE": 0.07601584494113922
+    },
+    "normalized_rmse_improvement_vs_persistence_%": 10.99076300095032
+  },
+  "daily_naive": {
+    "original_units": {
+      "MAE": 4558.974609375,
+      "RMSE": 27960.6796875,
+      "MAPE_%": 46.73797607421875
+    },
+    "per_pair_normalized": {
+      "MAE": 0.03238287940621376,
+      "RMSE": 0.10725948214530945
+    },
+    "normalized_rmse_improvement_vs_persistence_%": -25.593350623935173
+  },
+  "weekly_naive": {
+    "original_units": {
+      "MAE": 5448.72802734375,
+      "RMSE": 37487.578125,
+      "MAPE_%": 58.798980712890625
+    },
+    "per_pair_normalized": {
+      "MAE": 0.03310822695493698,
+      "RMSE": 0.11586051434278488
+    },
+    "normalized_rmse_improvement_vs_persistence_%": -35.664557671549346
+  },
+  "daily_weekly_mean": {
+    "original_units": {
+      "MAE": 4431.201171875,
+      "RMSE": 27216.71875,
+      "MAPE_%": 47.545928955078125
+    },
+    "per_pair_normalized": {
+      "MAE": 0.0293145589530468,
+      "RMSE": 0.09394297748804092
+    },
+    "normalized_rmse_improvement_vs_persistence_%": -10.000655180563323
+  }
+}

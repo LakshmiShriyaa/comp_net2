@@ -1,0 +1,71 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "nodes": 23,
+    "times": "geant_times.npy",
+    "window": 12,
+    "horizon": 4,
+    "step_min": 15,
+    "season": 96,
+    "scale": "range",
+    "hidden": 64,
+    "epochs": 15,
+    "patience": 4,
+    "batch": 65536,
+    "lr": 0.001,
+    "seed": 7,
+    "threads": 1,
+    "train_stride": 4,
+    "out": "res_FLOW_MLP_R4"
+  },
+  "selected_epoch": 15,
+  "best_validation_normalized_rmse": 0.08246085047721863,
+  "validation": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "per_pair_normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "flow_mlp": {
+      "original_units": {
+        "MAE": 2455.61767578125,
+        "RMSE": 12490.3876953125,
+        "MAPE_%": 23.538700103759766
+      },
+      "per_pair_normalized": {
+        "MAE": 0.02189147286117077,
+        "RMSE": 0.08246085047721863
+      }
+    }
+  },
+  "test": {
+    "naive_last_value": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "flow_mlp": {
+      "original_units": {
+        "MAE": 2288.498779296875,
+        "RMSE": 10347.4677734375,
+        "MAPE_%": 22.448192596435547
+      },
+      "per_pair_normalized": {
+        "MAE": 0.022694233804941177,
+        "RMSE": 0.06547775864601135
+      }
+    }
+  }
+}

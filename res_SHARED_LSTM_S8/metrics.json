@@ -1,0 +1,99 @@
+{
+  "flags": {
+    "data": "geant_final.npy",
+    "nodes": 23,
+    "window": 12,
+    "horizon": 4,
+    "season": 96,
+    "times": "geant_times.npy",
+    "step_min": 15,
+    "epochs": 12,
+    "lr": 0.001,
+    "batch": 64,
+    "threads": 1,
+    "patience": 4,
+    "seed": 0,
+    "keras_style": false,
+    "tod": false,
+    "final": false,
+    "under_w": 1.0,
+    "norm_loss": false,
+    "init_from": null,
+    "out": "res_SHARED_LSTM_S8",
+    "shared": true,
+    "local_scale": true,
+    "residual": false,
+    "mask_diag": true,
+    "log": false,
+    "no_despike": false,
+    "skip_plain": false,
+    "only_plain": true,
+    "train_stride": 8
+  },
+  "results": {
+    "Naive (last value)": {
+      "MAE": 1820.9593505859375,
+      "RMSE": 8771.7197265625,
+      "MAPE_%": 19.263734817504883
+    },
+    "Moving average (3)": {
+      "MAE": 1876.0587158203125,
+      "RMSE": 9092.9013671875,
+      "MAPE_%": 19.571123123168945
+    },
+    "Seasonal naive (96 ago)": {
+      "MAE": 3863.83642578125,
+      "RMSE": 20528.08203125,
+      "MAPE_%": 37.81278610229492
+    },
+    "Shared LSTM (no CNN)": {
+      "MAE": 1821.7403564453125,
+      "RMSE": 8671.0947265625,
+      "MAPE_%": 19.024065017700195
+    }
+  },
+  "normalised": {
+    "Naive (last value)": {
+      "MAE": 0.018236644566059113,
+      "RMSE": 0.05876334756612778
+    },
+    "Moving average (3)": {
+      "MAE": 0.018513495102524757,
+      "RMSE": 0.05717172101140022
+    },
+    "Seasonal naive (96 ago)": {
+      "MAE": 0.03084520995616913,
+      "RMSE": 0.0871271938085556
+    },
+    "Shared LSTM (no CNN)": {
+      "MAE": 0.0185772143304348,
+      "RMSE": 0.057830337435007095
+    }
+  },
+  "rmse_by_step": {
+    "Naive (last value)": [
+      6145.0849609375,
+      8207.802734375,
+      9531.1796875,
+      10573.49609375
+    ],
+    "Moving average (3)": [
+      7030.1005859375,
+      8608.35546875,
+      9722.16796875,
+      10614.9296875
+    ],
+    "Seasonal naive (96 ago)": [
+      20524.98046875,
+      20526.31640625,
+      20528.904296875,
+      20532.123046875
+    ],
+    "Shared LSTM (no CNN)": [
+      6092.56884765625,
+      8114.54638671875,
+      9412.193359375,
+      10449.732421875
+    ]
+  }
+}

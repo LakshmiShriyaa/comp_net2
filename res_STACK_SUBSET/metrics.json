@@ -1,0 +1,68 @@
+{
+  "selection": {
+    "strategy": "per-OD ridge stack selected by expanding validation CV",
+    "selected_features": [
+      "cnn_seed0",
+      "cnn_seed1",
+      "cnn_seed2",
+      "normalized_loss_cnn",
+      "ridge",
+      "seasonal_ridge",
+      "log_ridge",
+      "tree_ensemble",
+      "recursive_cnn"
+    ],
+    "alpha": 0.1,
+    "validation_cv_normalized_rmse": 0.050893780821488155,
+    "best_cv_normalized_rmse": 0.050893780821488155,
+    "tie_rule": "smallest candidate within 0.1% of best CV score"
+  },
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 2116.023681640625,
+        "RMSE": 11335.544921875,
+        "MAPE_%": 21.542545318603516
+      },
+      "normalized": {
+        "MAE": 0.01925528794527054,
+        "RMSE": 0.06352540105581284
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 2012.4189453125,
+        "RMSE": 9694.1630859375,
+        "MAPE_%": 21.214527130126953
+      },
+      "normalized": {
+        "MAE": 0.020609065890312195,
+        "RMSE": 0.05613713338971138
+      }
+    }
+  }
+}

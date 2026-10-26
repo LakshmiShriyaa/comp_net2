@@ -1,0 +1,72 @@
+{
+  "selection": {
+    "strategy": "ridge_stack",
+    "ridge_alpha": 1.0,
+    "upper_cap_extra_ranges": 0.5,
+    "validation_cv_normalized_rmse": {
+      "persistence": 0.06201343974074977,
+      "ridge_stack": 0.05104130092747279,
+      "convex_simplex": 0.05110017403218001,
+      "ridge_stack_improvement_vs_persistence_%": 17.69316273882975
+    }
+  },
+  "model_features": [
+    "cnn_seed_ensemble",
+    "normalized_loss_cnn",
+    "perflow_mean_ridge",
+    "seasonal_ridge",
+    "log_flow",
+    "tree_ensemble",
+    "moving_average_3",
+    "recursive_cnn",
+    "flow_context"
+  ],
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 2149.9501953125,
+        "RMSE": 11526.3974609375,
+        "MAPE_%": 21.94158363342285
+      },
+      "normalized": {
+        "MAE": 0.019529948011040688,
+        "RMSE": 0.06550916284322739
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 2007.0728759765625,
+        "RMSE": 9635.974609375,
+        "MAPE_%": 21.196006774902344
+      },
+      "normalized": {
+        "MAE": 0.020599527284502983,
+        "RMSE": 0.05646751821041107
+      }
+    }
+  }
+}

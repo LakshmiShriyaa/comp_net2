@@ -1,0 +1,52 @@
+{
+  "selection": "per-OD history length and ridge penalty selected on validation normalized RMSE",
+  "context": "source outgoing total, destination incoming total, average and peak shortest-path link load over last 3 observations; all scales from training only",
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "context_ridge": {
+      "original_units": {
+        "MAE": 2467.2055002464645,
+        "RMSE": 12038.895985581637,
+        "MAPE_%": 23.97060610370996
+      },
+      "normalized": {
+        "MAE": 0.02143688195629288,
+        "RMSE": 0.0679439635949937
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "context_ridge": {
+      "original_units": {
+        "MAE": 2232.2445368998497,
+        "RMSE": 9861.171640792605,
+        "MAPE_%": 22.713572409341694
+      },
+      "normalized": {
+        "MAE": 0.022355095860298758,
+        "RMSE": 0.05759348313835735
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "selection": {
+    "params": {
+      "lags": 6,
+      "alpha": 1.0,
+      "forgetting_factor": 1.0
+    },
+    "validation_normalized_rmse": 0.07234954197309613,
+    "method": "per-OD ridge updated only after its previous H-step targets are observed"
+  },
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "online_ridge": {
+      "original_units": {
+        "MAE": 2505.964441467024,
+        "RMSE": 12059.853443982154,
+        "MAPE_%": 23.40439831373703
+      },
+      "normalized": {
+        "MAE": 0.02358072050593706,
+        "RMSE": 0.07234954197309613
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "online_ridge": {
+      "original_units": {
+        "MAE": 2279.9358804476506,
+        "RMSE": 9902.152732596203,
+        "MAPE_%": 22.218751753694328
+      },
+      "normalized": {
+        "MAE": 0.023541502933137455,
+        "RMSE": 0.05778655760095254
+      }
+    }
+  }
+}
