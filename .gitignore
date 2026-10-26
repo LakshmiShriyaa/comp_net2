@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+*.log
+comp_net.zip
+data/
+presentation/
+presentation_capacity/
+res_*/
+!res_S4L/
+!res_S4L_s1/
+!res_S4L_s2/
+!res_NORM_CNN/
+!res_LINEAR_SEASONAL/
+!res_LOG_FLOW/
+!res_TREE_FULL/
+!res_STACK_BEST/
+!res_STACK_GEANT_CAP/
+README (3).md
+README (4).md
+/dir
+/python

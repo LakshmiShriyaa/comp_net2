@@ -1,0 +1,26 @@
+{
+  "split": "test replay; exploratory because test has been inspected during development",
+  "validation_selected": {
+    "k_paths": 5,
+    "objective": "overflow",
+    "trigger": 0.45
+  },
+  "reactive": {
+    "steps_above_70_utilization_%": 5.434103685196752,
+    "above_trigger_traffic_proxy_%": 0.00427176232793121,
+    "physical_overload_traffic_proxy_%": 0.0,
+    "mean_max_link_util": 0.4851724791161944,
+    "p95_max_link_util": 0.7030580639839172,
+    "avg_flows_rerouted": 0.08057464084946908,
+    "mean_igp_cost_stretch": 1.0000173082059804
+  },
+  "proactive": {
+    "steps_above_70_utilization_%": 0.06246096189881324,
+    "above_trigger_traffic_proxy_%": 0.00017905572335061843,
+    "physical_overload_traffic_proxy_%": 0.0,
+    "mean_max_link_util": 0.4156212735686132,
+    "p95_max_link_util": 0.5189600586891174,
+    "avg_flows_rerouted": 2.211742660836977,
+    "mean_igp_cost_stretch": 1.0020139396823546
+  }
+}

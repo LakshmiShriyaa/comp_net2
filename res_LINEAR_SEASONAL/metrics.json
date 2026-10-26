@@ -1,0 +1,58 @@
+{
+  "selection": "per-OD alpha selected from validation normalized squared error",
+  "alphas": {
+    "0.1": 279,
+    "1.0": 102,
+    "10.0": 37,
+    "100.0": 18,
+    "1000.0": 70
+  },
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "seasonal_ridge": {
+      "original_units": {
+        "MAE": 2411.8781718678238,
+        "RMSE": 11871.046484140705,
+        "MAPE_%": 23.546678962959525
+      },
+      "normalized": {
+        "MAE": 0.02201404008579141,
+        "RMSE": 0.0673658401664045
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "seasonal_ridge": {
+      "original_units": {
+        "MAE": 2200.6367881867723,
+        "RMSE": 9764.9627666784,
+        "MAPE_%": 22.218969783902864
+      },
+      "normalized": {
+        "MAE": 0.02254954974150565,
+        "RMSE": 0.05833158023140441
+      }
+    }
+  }
+}

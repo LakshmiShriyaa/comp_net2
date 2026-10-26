@@ -1,0 +1,301 @@
+{
+  "config": {
+    "results": "res_STACK_GEANT_CAP",
+    "val_results": "res_STACK_BEST",
+    "nodes": 23,
+    "topo": "geant",
+    "edges": "geant_edges.txt",
+    "link_metadata": "geant_link_capacities.csv",
+    "cap_scale": 0.5,
+    "k": 5,
+    "optimizer": "overflow",
+    "report_thr": 0.7,
+    "triggers": [
+      0.45,
+      0.55,
+      0.7
+    ],
+    "budget": 3.0,
+    "hybrid": true,
+    "boot": 2000,
+    "block": 96,
+    "out": "res_STACK_GEANT_CAP/stress_50pct"
+  },
+  "validation_selected_triggers": {
+    "reactive": 0.7,
+    "proactive": 0.7,
+    "hybrid": 0.7
+  },
+  "validation_reroute_budget_met": {
+    "reactive": false,
+    "proactive": false,
+    "hybrid": false
+  },
+  "validation_grid": {
+    "static@None": {
+      "steps_above_%": 89.19425359150532,
+      "above_traffic_%": 2.9775421449829755,
+      "mean_peak_util": 1.0947818639016316,
+      "physical_overload_%": 1.0878439323816684,
+      "reroutes_per_step": 0.0
+    },
+    "reactive@0.45": {
+      "steps_above_%": 33.10430980637102,
+      "above_traffic_%": 0.4405657036383845,
+      "mean_peak_util": 0.6645629743089682,
+      "physical_overload_%": 0.079202113840772,
+      "reroutes_per_step": 11.002498438475952
+    },
+    "proactive@0.45": {
+      "steps_above_%": 31.41786383510306,
+      "above_traffic_%": 0.39150329297573344,
+      "mean_peak_util": 0.6535037296738645,
+      "physical_overload_%": 0.05045610294219091,
+      "reroutes_per_step": 12.493441599000624
+    },
+    "oracle@0.45": {
+      "steps_above_%": 28.48219862585884,
+      "above_traffic_%": 0.2920263417417675,
+      "mean_peak_util": 0.6338594305485505,
+      "physical_overload_%": 0.017967321939668945,
+      "reroutes_per_step": 10.992504684572143
+    },
+    "hybrid@0.45": {
+      "steps_above_%": 31.043098063710183,
+      "above_traffic_%": 0.3820277986001801,
+      "mean_peak_util": 0.6489954854755533,
+      "physical_overload_%": 0.050037392198023944,
+      "reroutes_per_step": 13.024984384759525
+    },
+    "reactive@0.55": {
+      "steps_above_%": 35.10306058713304,
+      "above_traffic_%": 0.45121727692578395,
+      "mean_peak_util": 0.6844487965181424,
+      "physical_overload_%": 0.07887827844204709,
+      "reroutes_per_step": 8.50843222985634
+    },
+    "proactive@0.55": {
+      "steps_above_%": 32.79200499687695,
+      "above_traffic_%": 0.4007017062335629,
+      "mean_peak_util": 0.6748749462981882,
+      "physical_overload_%": 0.05051850467406951,
+      "reroutes_per_step": 9.572142410993129
+    },
+    "oracle@0.55": {
+      "steps_above_%": 28.48219862585884,
+      "above_traffic_%": 0.294320536018662,
+      "mean_peak_util": 0.6541437078348775,
+      "physical_overload_%": 0.017971696481366664,
+      "reroutes_per_step": 8.504684572142411
+    },
+    "hybrid@0.55": {
+      "steps_above_%": 31.917551530293565,
+      "above_traffic_%": 0.38573435413425544,
+      "mean_peak_util": 0.6649231596487452,
+      "physical_overload_%": 0.04729756407010055,
+      "reroutes_per_step": 10.258588382261086
+    },
+    "reactive@0.7": {
+      "steps_above_%": 47.09556527170518,
+      "above_traffic_%": 0.516368593067883,
+      "mean_peak_util": 0.7474197331515794,
+      "physical_overload_%": 0.0882420010883863,
+      "reroutes_per_step": 5.3928794503435356
+    },
+    "proactive@0.7": {
+      "steps_above_%": 44.784509681449094,
+      "above_traffic_%": 0.43888659530769825,
+      "mean_peak_util": 0.7357731658842026,
+      "physical_overload_%": 0.052693199044843465,
+      "reroutes_per_step": 5.940662086196127
+    },
+    "oracle@0.7": {
+      "steps_above_%": 28.48219862585884,
+      "above_traffic_%": 0.2954431276949963,
+      "mean_peak_util": 0.7250811769990605,
+      "physical_overload_%": 0.017971647726315394,
+      "reroutes_per_step": 5.4072454715802625
+    },
+    "hybrid@0.7": {
+      "steps_above_%": 40.162398500936916,
+      "above_traffic_%": 0.41280254515926446,
+      "mean_peak_util": 0.7186596333273197,
+      "physical_overload_%": 0.046695107273275645,
+      "reroutes_per_step": 6.387257963772642
+    }
+  },
+  "validation_note": "If pred_val comes from a model fitted on validation (e.g. a stack), the forecast is in-sample there and validation selection favours it.",
+  "test_grid": {
+    "static@None": {
+      "steps_above_%": 88.94440974391006,
+      "above_traffic_%": 1.7109726329593713,
+      "mean_peak_util": 0.983575349930746,
+      "physical_overload_%": 0.19417612238430706,
+      "reroutes_per_step": 0.0
+    },
+    "reactive@0.45": {
+      "steps_above_%": 32.47970018738289,
+      "above_traffic_%": 0.1972894562213395,
+      "mean_peak_util": 0.6354924090425347,
+      "physical_overload_%": 0.01010435556041224,
+      "reroutes_per_step": 9.507183010618364
+    },
+    "proactive@0.45": {
+      "steps_above_%": 30.106183635227985,
+      "above_traffic_%": 0.15041359001235202,
+      "mean_peak_util": 0.6252145185498875,
+      "physical_overload_%": 0.008863640209867086,
+      "reroutes_per_step": 10.570268582136165
+    },
+    "oracle@0.45": {
+      "steps_above_%": 28.73204247345409,
+      "above_traffic_%": 0.15874769335966812,
+      "mean_peak_util": 0.6121949573035244,
+      "physical_overload_%": 0.003802705580964539,
+      "reroutes_per_step": 9.519675202998126
+    },
+    "hybrid@0.45": {
+      "steps_above_%": 30.04372267332917,
+      "above_traffic_%": 0.14418882856232093,
+      "mean_peak_util": 0.622163534536725,
+      "physical_overload_%": 0.007162546840512712,
+      "reroutes_per_step": 10.948782011242972
+    },
+    "reactive@0.55": {
+      "steps_above_%": 34.16614615865085,
+      "above_traffic_%": 0.20016208442196906,
+      "mean_peak_util": 0.6527440189607884,
+      "physical_overload_%": 0.010105205613159151,
+      "reroutes_per_step": 7.276702061211743
+    },
+    "proactive@0.55": {
+      "steps_above_%": 30.918176139912557,
+      "above_traffic_%": 0.15257489285154865,
+      "mean_peak_util": 0.6452089552764666,
+      "physical_overload_%": 0.008904961337025011,
+      "reroutes_per_step": 7.9262960649594
+    },
+    "oracle@0.55": {
+      "steps_above_%": 28.73204247345409,
+      "above_traffic_%": 0.15804293403780184,
+      "mean_peak_util": 0.6320467949993234,
+      "physical_overload_%": 0.0038027125833991486,
+      "reroutes_per_step": 7.301686445971268
+    },
+    "hybrid@0.55": {
+      "steps_above_%": 30.543410368519673,
+      "above_traffic_%": 0.14344568516533593,
+      "mean_peak_util": 0.6370394888667298,
+      "physical_overload_%": 0.0071625535006228334,
+      "reroutes_per_step": 8.479075577763897
+    },
+    "reactive@0.7": {
+      "steps_above_%": 44.3472829481574,
+      "above_traffic_%": 0.2522878867449602,
+      "mean_peak_util": 0.7154921829923848,
+      "physical_overload_%": 0.013378486622711013,
+      "reroutes_per_step": 4.630231105559026
+    },
+    "proactive@0.7": {
+      "steps_above_%": 44.284821986258585,
+      "above_traffic_%": 0.19444322041262388,
+      "mean_peak_util": 0.7092028570540021,
+      "physical_overload_%": 0.01049002175538296,
+      "reroutes_per_step": 4.888194878201125
+    },
+    "oracle@0.7": {
+      "steps_above_%": 28.73204247345409,
+      "above_traffic_%": 0.16017153535275436,
+      "mean_peak_util": 0.7007072709970814,
+      "physical_overload_%": 0.003802581510385758,
+      "reroutes_per_step": 4.6420986883198
+    },
+    "hybrid@0.7": {
+      "steps_above_%": 38.22610868207371,
+      "above_traffic_%": 0.16025328001476255,
+      "mean_peak_util": 0.6901223512086029,
+      "physical_overload_%": 0.007163394154983254,
+      "reroutes_per_step": 5.361024359775141
+    }
+  },
+  "same_trigger_diffs": [
+    {
+      "reactive_trigger": 0.45,
+      "proactive_trigger": 0.45,
+      "d_steps_above_pp": [
+        -2.373516552154903,
+        -3.1230480949406623,
+        -1.499063085571518
+      ],
+      "d_above_traffic_pp": [
+        -0.0468758662089875,
+        -0.07710107479072467,
+        -0.017857097915230186
+      ],
+      "d_reroutes": [
+        1.0630855715178014,
+        0.7501405371642723,
+        1.3597751405371643
+      ]
+    },
+    {
+      "reactive_trigger": 0.55,
+      "proactive_trigger": 0.55,
+      "d_steps_above_pp": [
+        -3.2479700187382887,
+        -4.559650218613367,
+        -1.8738288569643973
+      ],
+      "d_above_traffic_pp": [
+        -0.04758719157042044,
+        -0.07760145807971609,
+        -0.018782402723936522
+      ],
+      "d_reroutes": [
+        0.6495940037476577,
+        0.3172236102435978,
+        0.9688319800124918
+      ]
+    },
+    {
+      "reactive_trigger": 0.7,
+      "proactive_trigger": 0.7,
+      "d_steps_above_pp": [
+        -0.06246096189881324,
+        -1.9362898188632105,
+        1.4366021236727045
+      ],
+      "d_above_traffic_pp": [
+        -0.057844666332336356,
+        -0.09384331519714759,
+        -0.025250761873623028
+      ],
+      "d_reroutes": [
+        0.2579637726420987,
+        0.024984384759525295,
+        0.5553247970018736
+      ]
+    }
+  ],
+  "validation_selected_diffs": [
+    {
+      "reactive_trigger": 0.7,
+      "proactive_trigger": 0.7,
+      "d_steps_above_pp": [
+        -0.06246096189881324,
+        -1.9362898188632105,
+        1.4366021236727045
+      ],
+      "d_above_traffic_pp": [
+        -0.057844666332336356,
+        -0.09384331519714759,
+        -0.025250761873623028
+      ],
+      "d_reroutes": [
+        0.2579637726420987,
+        0.024984384759525295,
+        0.5553247970018736
+      ]
+    }
+  ]
+}

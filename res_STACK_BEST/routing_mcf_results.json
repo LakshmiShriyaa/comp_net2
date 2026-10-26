@@ -1,0 +1,39 @@
+{
+  "capacity": 1181952.125,
+  "capacity_source": "train-only percentile stress assumption",
+  "k_paths": 3,
+  "path_penalty": 0.01,
+  "limit": 20,
+  "val": {
+    "proactive_forecast": {
+      "congestion_%": 0.0,
+      "overload_%": 0.0,
+      "mean_max_util": 0.7303874003783434,
+      "rerouted_flows": 122.15,
+      "path_stretch": 1.0239037734042302
+    },
+    "reactive_last_observation": {
+      "congestion_%": 0.0,
+      "overload_%": 0.0,
+      "mean_max_util": 0.7422919830967482,
+      "rerouted_flows": 119.1,
+      "path_stretch": 1.0255307414454147
+    }
+  },
+  "test": {
+    "proactive_forecast": {
+      "congestion_%": 0.0,
+      "overload_%": 0.0,
+      "mean_max_util": 0.35966630885571965,
+      "rerouted_flows": 149.75,
+      "path_stretch": 1.197571527634644
+    },
+    "reactive_last_observation": {
+      "congestion_%": 0.0,
+      "overload_%": 0.0,
+      "mean_max_util": 0.3618896541859712,
+      "rerouted_flows": 144.25,
+      "path_stretch": 1.1969946734844308
+    }
+  }
+}

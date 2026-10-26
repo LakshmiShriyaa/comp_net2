@@ -1,0 +1,67 @@
+{
+  "routing": {
+    "static": {
+      "mean_max_link_util": 0.9265158772468567,
+      "p95_max_link_util": 1.225660800933838,
+      "steps_with_congestion_%": 29.981261711430356,
+      "overload_traffic_%": 0.4029209613800049,
+      "avg_flows_rerouted": 0.0,
+      "path_stretch": 1.0
+    },
+    "reactive (last matrix)": {
+      "mean_max_link_util": 0.8413530588150024,
+      "p95_max_link_util": 1.0572423934936523,
+      "steps_with_congestion_%": 8.931917551530294,
+      "overload_traffic_%": 0.10187844932079315,
+      "avg_flows_rerouted": 4.522173641474079,
+      "path_stretch": 1.0401479005813599
+    },
+    "proactive (CNN-LSTM)": {
+      "mean_max_link_util": 0.8489165902137756,
+      "p95_max_link_util": 1.0541621446609497,
+      "steps_with_congestion_%": 8.4946908182386,
+      "overload_traffic_%": 0.09618829935789108,
+      "avg_flows_rerouted": 3.9125546533416613,
+      "path_stretch": 1.0335713624954224
+    },
+    "hybrid (max fcst, last)": {
+      "mean_max_link_util": 0.8379985690116882,
+      "p95_max_link_util": 1.0545696020126343,
+      "steps_with_congestion_%": 8.4946908182386,
+      "overload_traffic_%": 0.09947981685400009,
+      "avg_flows_rerouted": 5.024359775140537,
+      "path_stretch": 1.0400853157043457
+    },
+    "oracle (true matrix)": {
+      "mean_max_link_util": 0.8237149119377136,
+      "p95_max_link_util": 1.030271053314209,
+      "steps_with_congestion_%": 6.2460961898813245,
+      "overload_traffic_%": 0.07754490524530411,
+      "avg_flows_rerouted": 4.52529668956902,
+      "path_stretch": 1.0402685403823853
+    }
+  },
+  "detection": {
+    "last observed (4 step(s) old)": {
+      "link_load_RMSE_%cap": 4.282436370849609,
+      "precision": 0.8418500559492726,
+      "recall": 0.8393454815916698,
+      "F1": 0.8405959031657355,
+      "true_congested_events": 2689
+    },
+    "CNN-LSTM forecast": {
+      "link_load_RMSE_%cap": 4.121741771697998,
+      "precision": 0.9126696832579185,
+      "recall": 0.7500929713648197,
+      "F1": 0.8234333537456624,
+      "true_congested_events": 2689
+    },
+    "hybrid (max fcst, last)": {
+      "link_load_RMSE_%cap": 4.265929222106934,
+      "precision": 0.8199788210377692,
+      "recall": 0.8638899219040536,
+      "F1": 0.8413618254255706,
+      "true_congested_events": 2689
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "split": "validation",
+  "capacity_calibrated_from": "train prefix",
+  "reactive_threshold": 0.7,
+  "reactive_by_objective": {
+    "minmax": {
+      "congestion_%": 2.373516552154903,
+      "overload_%": 0.015599887410644442,
+      "rerouted": 6.695190505933791,
+      "path_stretch": 1.0190978050231934
+    },
+    "overflow": {
+      "congestion_%": 2.373516552154903,
+      "overload_%": 0.014567568723578006,
+      "rerouted": 7.009369144284822,
+      "path_stretch": 1.016088843345642
+    }
+  },
+  "selection_rule": "among thresholds improving both congestion and overload vs reactive, minimize congestion, then overload, then reroutes",
+  "reactive_validation": {
+    "congestion_%": 2.373516552154903,
+    "overload_%": 0.014567568723578006,
+    "rerouted": 7.009369144284822,
+    "path_stretch": 1.016088843345642
+  },
+  "selected": {
+    "objective": "overflow",
+    "k_paths": 3,
+    "proactive_threshold": 0.6,
+    "proactive_congestion_%": 1.811367895065584,
+    "proactive_overload_%": 0.01139947707997635,
+    "proactive_rerouted": 11.510930668332293,
+    "proactive_path_stretch": 1.041119933128357,
+    "reactive_congestion_%": 2.373516552154903,
+    "reactive_overload_%": 0.014567568723578006,
+    "reactive_rerouted": 7.009369144284822,
+    "reactive_path_stretch": 1.016088843345642
+  },
+  "sweep": [
+    {
+      "objective": "minmax",
+      "k_paths": 3,
+      "proactive_threshold": 0.6,
+      "proactive_congestion_%": 2.12367270455965,
+      "proactive_overload_%": 0.013856113946530968,
+      "proactive_rerouted": 11.420362273579013,
+      "proactive_path_stretch": 1.0372564792633057,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "objective": "minmax",
+      "k_paths": 3,
+      "proactive_threshold": 0.65,
+      "proactive_congestion_%": 2.12367270455965,
+      "proactive_overload_%": 0.014072835620027035,
+      "proactive_rerouted": 8.761399125546534,
+      "proactive_path_stretch": 1.028334379196167,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "objective": "minmax",
+      "k_paths": 3,
+      "proactive_threshold": 0.7,
+      "proactive_congestion_%": 2.1861336664584634,
+      "proactive_overload_%": 0.01308357750531286,
+      "proactive_rerouted": 5.876327295440349,
+      "proactive_path_stretch": 1.018714189529419,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "objective": "overflow",
+      "k_paths": 3,
+      "proactive_threshold": 0.6,
+      "proactive_congestion_%": 1.811367895065584,
+      "proactive_overload_%": 0.01139947707997635,
+      "proactive_rerouted": 11.510930668332293,
+      "proactive_path_stretch": 1.041119933128357,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.014567568723578006,
+      "reactive_rerouted": 7.009369144284822,
+      "reactive_path_stretch": 1.016088843345642
+    },
+    {
+      "objective": "overflow",
+      "k_paths": 3,
+      "proactive_threshold": 0.65,
+      "proactive_congestion_%": 1.9987507807620237,
+      "proactive_overload_%": 0.0120834622066468,
+      "proactive_rerouted": 9.300437226733292,
+      "proactive_path_stretch": 1.0268796682357788,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.014567568723578006,
+      "reactive_rerouted": 7.009369144284822,
+      "reactive_path_stretch": 1.016088843345642
+    },
+    {
+      "objective": "overflow",
+      "k_paths": 3,
+      "proactive_threshold": 0.7,
+      "proactive_congestion_%": 2.2485946283572766,
+      "proactive_overload_%": 0.012628409604076296,
+      "proactive_rerouted": 6.479075577763898,
+      "proactive_path_stretch": 1.0145949125289917,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.014567568723578006,
+      "reactive_rerouted": 7.009369144284822,
+      "reactive_path_stretch": 1.016088843345642
+    }
+  ]
+}

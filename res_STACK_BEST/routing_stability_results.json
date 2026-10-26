@@ -1,0 +1,74 @@
+{
+  "capacity": 1181952.125,
+  "hysteresis": 0.05,
+  "split_metrics": {
+    "val": {
+      "reactive": {
+        "independent": {
+          "congestion_%": 2.373516552154903,
+          "overload_%": 0.015599887410644442,
+          "mean_max_util": 0.6788285970687866,
+          "rerouted_flows": 6.695190505933791,
+          "path_changes_per_interval": 4.773266708307308
+        },
+        "persistent_hysteresis_5pct": {
+          "congestion_%": 1.5615240474703311,
+          "overload_%": 0.014057981024961919,
+          "mean_max_util": 0.65531325340271,
+          "rerouted_flows": 11.139287945034354,
+          "path_changes_per_interval": 0.03497813866333541
+        }
+      },
+      "proactive": {
+        "independent": {
+          "congestion_%": 2.1861336664584634,
+          "overload_%": 0.01308357750531286,
+          "mean_max_util": 0.6793114542961121,
+          "rerouted_flows": 5.876327295440349,
+          "path_changes_per_interval": 3.2885696439725174
+        },
+        "persistent_hysteresis_5pct": {
+          "congestion_%": 1.9362898188632107,
+          "overload_%": 0.022381049348041415,
+          "mean_max_util": 0.6586431264877319,
+          "rerouted_flows": 8.244846970643348,
+          "path_changes_per_interval": 0.026858213616489695
+        }
+      }
+    },
+    "test": {
+      "reactive": {
+        "independent": {
+          "congestion_%": 0.6246096189881324,
+          "overload_%": 0.006264116382226348,
+          "mean_max_util": 0.6405560970306396,
+          "rerouted_flows": 2.249219237976265,
+          "path_changes_per_interval": 1.065584009993754
+        },
+        "persistent_hysteresis_5pct": {
+          "congestion_%": 1.311680199875078,
+          "overload_%": 0.008671408431837335,
+          "mean_max_util": 0.6070808172225952,
+          "rerouted_flows": 5.813866333541537,
+          "path_changes_per_interval": 0.01811367895065584
+        }
+      },
+      "proactive": {
+        "independent": {
+          "congestion_%": 0.5621486570893192,
+          "overload_%": 0.007557216304121539,
+          "mean_max_util": 0.6459165215492249,
+          "rerouted_flows": 1.8051217988757027,
+          "path_changes_per_interval": 0.7838850718301061
+        },
+        "persistent_hysteresis_5pct": {
+          "congestion_%": 0.8119925046845722,
+          "overload_%": 0.007771089440211654,
+          "mean_max_util": 0.6246695518493652,
+          "rerouted_flows": 4.352904434728295,
+          "path_changes_per_interval": 0.01311680199875078
+        }
+      }
+    }
+  }
+}

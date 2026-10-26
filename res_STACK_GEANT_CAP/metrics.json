@@ -1,0 +1,80 @@
+{
+  "selection": {
+    "strategy": "per-OD ridge meta-stack; penalty and residual gain selected by expanding chronological validation CV",
+    "features": [
+      "cnn_seed_ensemble",
+      "normalized_loss_cnn",
+      "perflow_mean_ridge",
+      "seasonal_ridge",
+      "log_flow",
+      "tree_ensemble",
+      "moving_average_3",
+      "shared_lstm"
+    ],
+    "alpha": 0.1,
+    "residual_gain": 0.9,
+    "folds": [
+      [
+        800,
+        1200
+      ],
+      [
+        1200,
+        1601
+      ]
+    ],
+    "validation_cv_normalized_rmse": {
+      "persistence": 0.06201343974074977,
+      "stack": 0.05086330939419309,
+      "improvement_vs_persistence_percent": 17.980183639498705
+    }
+  },
+  "validation": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2349.010986328125,
+        "RMSE": 12732.373046875,
+        "MAPE_%": 23.985401153564453
+      },
+      "normalized": {
+        "MAE": 0.021610775962471962,
+        "RMSE": 0.08540219813585281
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 2111.36181640625,
+        "RMSE": 11367.8701171875,
+        "MAPE_%": 21.485065460205078
+      },
+      "normalized": {
+        "MAE": 0.019171331077814102,
+        "RMSE": 0.06416086852550507
+      }
+    }
+  },
+  "test": {
+    "persistence": {
+      "original_units": {
+        "MAE": 2183.2587890625,
+        "RMSE": 10573.49609375,
+        "MAPE_%": 22.789905548095703
+      },
+      "normalized": {
+        "MAE": 0.022408856078982353,
+        "RMSE": 0.06892899423837662
+      }
+    },
+    "stack": {
+      "original_units": {
+        "MAE": 1995.0777587890625,
+        "RMSE": 9692.431640625,
+        "MAPE_%": 21.017650604248047
+      },
+      "normalized": {
+        "MAE": 0.02036677859723568,
+        "RMSE": 0.05578511953353882
+      }
+    }
+  }
+}

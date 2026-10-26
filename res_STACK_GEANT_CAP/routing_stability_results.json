@@ -1,0 +1,61 @@
+{
+  "split": "test replay; exploratory because this period was previously inspected",
+  "capacity_source": "geant_link_capacities.csv",
+  "path_weights": "archived G\u00c9ANT IGP metrics",
+  "routing_config": {
+    "k_paths": 5,
+    "objective": "overflow",
+    "reactive_trigger": 0.7,
+    "proactive_trigger": 0.45
+  },
+  "modes": {
+    "reactive": {
+      "trigger": 0.7,
+      "selected_hysteresis": 0.4,
+      "independent": {
+        "steps_above_70_utilization_%": 5.434103685196752,
+        "above_trigger_traffic_proxy_%": 0.00427176232793121,
+        "physical_overload_traffic_proxy_%": 0.0,
+        "mean_max_link_util": 0.4851724791161944,
+        "p95_max_link_util": 0.7030580639839172,
+        "avg_flows_rerouted": 0.08057464084946908,
+        "route_changes_per_interval": 0.10493441599000625,
+        "mean_igp_cost_stretch": 1.0000173082782748
+      },
+      "persistent_hysteresis": {
+        "steps_above_70_utilization_%": 0.3747657713928795,
+        "above_trigger_traffic_proxy_%": 0.0008171923088606711,
+        "physical_overload_traffic_proxy_%": 0.0,
+        "mean_max_link_util": 0.4373832167888864,
+        "p95_max_link_util": 0.5674862861633301,
+        "avg_flows_rerouted": 2.0118675827607744,
+        "route_changes_per_interval": 0.0018738288569643974,
+        "mean_igp_cost_stretch": 1.0006391162490627
+      }
+    },
+    "proactive": {
+      "trigger": 0.45,
+      "selected_hysteresis": 0.01,
+      "independent": {
+        "steps_above_70_utilization_%": 0.06246096189881324,
+        "above_trigger_traffic_proxy_%": 0.00017905572335061843,
+        "physical_overload_traffic_proxy_%": 0.0,
+        "mean_max_link_util": 0.4156212735686132,
+        "p95_max_link_util": 0.5189600586891174,
+        "avg_flows_rerouted": 2.211742660836977,
+        "route_changes_per_interval": 0.9412866958151156,
+        "mean_igp_cost_stretch": 1.0020139411465239
+      },
+      "persistent_hysteresis": {
+        "steps_above_70_utilization_%": 0.0,
+        "above_trigger_traffic_proxy_%": 0.0,
+        "physical_overload_traffic_proxy_%": 0.0,
+        "mean_max_link_util": 0.33041643438340723,
+        "p95_max_link_util": 0.48547229170799255,
+        "avg_flows_rerouted": 7.278575890068707,
+        "route_changes_per_interval": 0.004996876951905059,
+        "mean_igp_cost_stretch": 1.00878434335323
+      }
+    }
+  }
+}

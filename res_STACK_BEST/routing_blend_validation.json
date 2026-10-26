@@ -1,0 +1,146 @@
+{
+  "split": "validation",
+  "capacity": 1181952.125,
+  "threshold": 0.7,
+  "selection_rule": "require lower congestion and overload proxy than reactive; then minimize congestion, overload, reroutes",
+  "reactive": {
+    "congestion_%": 2.373516552154903,
+    "overload_%": 0.015599887410644442,
+    "rerouted": 6.695190505933791,
+    "path_stretch": 1.0190978050231934
+  },
+  "selected": {
+    "weight_last": 0.0,
+    "proactive_congestion_%": 2.1861336664584634,
+    "proactive_overload_%": 0.01308357750531286,
+    "proactive_rerouted": 5.8831980012492195,
+    "proactive_path_stretch": 1.018714189529419,
+    "reactive_congestion_%": 2.373516552154903,
+    "reactive_overload_%": 0.015599887410644442,
+    "reactive_rerouted": 6.695190505933791,
+    "reactive_path_stretch": 1.0190978050231934
+  },
+  "sweep": [
+    {
+      "weight_last": 0.0,
+      "proactive_congestion_%": 2.1861336664584634,
+      "proactive_overload_%": 0.01308357750531286,
+      "proactive_rerouted": 5.8831980012492195,
+      "proactive_path_stretch": 1.018714189529419,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.1,
+      "proactive_congestion_%": 2.2485946283572766,
+      "proactive_overload_%": 0.013060933270025998,
+      "proactive_rerouted": 6.050593379138038,
+      "proactive_path_stretch": 1.0187904834747314,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.2,
+      "proactive_congestion_%": 2.1861336664584634,
+      "proactive_overload_%": 0.013268199109006673,
+      "proactive_rerouted": 6.128044971892567,
+      "proactive_path_stretch": 1.0187842845916748,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.3,
+      "proactive_congestion_%": 2.2485946283572766,
+      "proactive_overload_%": 0.013928589760325849,
+      "proactive_rerouted": 6.184884447220488,
+      "proactive_path_stretch": 1.0186866521835327,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.4,
+      "proactive_congestion_%": 2.31105559025609,
+      "proactive_overload_%": 0.01423404028173536,
+      "proactive_rerouted": 6.289194253591505,
+      "proactive_path_stretch": 1.018930196762085,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.5,
+      "proactive_congestion_%": 2.4359775140537163,
+      "proactive_overload_%": 0.01495860778959468,
+      "proactive_rerouted": 6.415990006246096,
+      "proactive_path_stretch": 1.0188217163085938,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.6,
+      "proactive_congestion_%": 2.4359775140537163,
+      "proactive_overload_%": 0.014978468243498355,
+      "proactive_rerouted": 6.560274828232354,
+      "proactive_path_stretch": 1.0187528133392334,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.7,
+      "proactive_congestion_%": 2.373516552154903,
+      "proactive_overload_%": 0.015233315934892744,
+      "proactive_rerouted": 6.560899437851343,
+      "proactive_path_stretch": 1.0188915729522705,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.8,
+      "proactive_congestion_%": 2.4984384759525295,
+      "proactive_overload_%": 0.015755213098600507,
+      "proactive_rerouted": 6.667083073079326,
+      "proactive_path_stretch": 1.0188491344451904,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 0.9,
+      "proactive_congestion_%": 2.31105559025609,
+      "proactive_overload_%": 0.015348178567364812,
+      "proactive_rerouted": 6.773266708307308,
+      "proactive_path_stretch": 1.0191094875335693,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    },
+    {
+      "weight_last": 1.0,
+      "proactive_congestion_%": 2.373516552154903,
+      "proactive_overload_%": 0.015599887410644442,
+      "proactive_rerouted": 6.721424109931293,
+      "proactive_path_stretch": 1.0191043615341187,
+      "reactive_congestion_%": 2.373516552154903,
+      "reactive_overload_%": 0.015599887410644442,
+      "reactive_rerouted": 6.695190505933791,
+      "reactive_path_stretch": 1.0190978050231934
+    }
+  ]
+}

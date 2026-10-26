@@ -1,0 +1,316 @@
+{
+  "metadata": {
+    "topology": "geant",
+    "edge_file": "geant_edges.txt",
+    "k_paths": 5,
+    "routing_objective": "overflow",
+    "capacity": null,
+    "link_capacities": [
+      {
+        "u": 0,
+        "v": 11,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 150.0
+      },
+      {
+        "u": 0,
+        "v": 10,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 100.0
+      },
+      {
+        "u": 0,
+        "v": 13,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 90.0
+      },
+      {
+        "u": 1,
+        "v": 2,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 395.0
+      },
+      {
+        "u": 1,
+        "v": 16,
+        "capacity_kbps": 155000.0,
+        "igp_metric": 6700.0
+      },
+      {
+        "u": 1,
+        "v": 13,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 1,
+        "v": 20,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 2,
+        "v": 12,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 400.0
+      },
+      {
+        "u": 2,
+        "v": 14,
+        "capacity_kbps": 155000.0,
+        "igp_metric": 6070.0
+      },
+      {
+        "u": 3,
+        "v": 20,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 405.0
+      },
+      {
+        "u": 3,
+        "v": 13,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 395.0
+      },
+      {
+        "u": 4,
+        "v": 8,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 400.0
+      },
+      {
+        "u": 4,
+        "v": 19,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 400.0
+      },
+      {
+        "u": 5,
+        "v": 13,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 370.0
+      },
+      {
+        "u": 5,
+        "v": 21,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 350.0
+      },
+      {
+        "u": 6,
+        "v": 13,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 20000.0
+      },
+      {
+        "u": 6,
+        "v": 15,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 20050.0
+      },
+      {
+        "u": 7,
+        "v": 9,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 7,
+        "v": 12,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 7,
+        "v": 15,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 100.0
+      },
+      {
+        "u": 8,
+        "v": 15,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 400.0
+      },
+      {
+        "u": 9,
+        "v": 10,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 9,
+        "v": 16,
+        "capacity_kbps": 155000.0,
+        "igp_metric": 6600.0
+      },
+      {
+        "u": 9,
+        "v": 18,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 395.0
+      },
+      {
+        "u": 9,
+        "v": 21,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 10,
+        "v": 18,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 400.0
+      },
+      {
+        "u": 10,
+        "v": 15,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 100.0
+      },
+      {
+        "u": 10,
+        "v": 20,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 1.0
+      },
+      {
+        "u": 11,
+        "v": 17,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 350.0
+      },
+      {
+        "u": 12,
+        "v": 20,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 100.0
+      },
+      {
+        "u": 12,
+        "v": 14,
+        "capacity_kbps": 155000.0,
+        "igp_metric": 6400.0
+      },
+      {
+        "u": 12,
+        "v": 13,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 70.0
+      },
+      {
+        "u": 12,
+        "v": 21,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 90.0
+      },
+      {
+        "u": 15,
+        "v": 19,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 150.0
+      },
+      {
+        "u": 17,
+        "v": 22,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 250.0
+      },
+      {
+        "u": 17,
+        "v": 20,
+        "capacity_kbps": 10000000.0,
+        "igp_metric": 100.0
+      },
+      {
+        "u": 19,
+        "v": 22,
+        "capacity_kbps": 2400000.0,
+        "igp_metric": 170.0
+      }
+    ],
+    "link_metadata_file": "geant_link_capacities.csv",
+    "link_metadata_provenance": "IGen geant-20041125.gml; unique graph-isomorphism match to the anonymized 23-node, 37-link topology; bandwidth converted to kbps",
+    "capacity_calibration_file": null,
+    "congestion_threshold": 0.45,
+    "proactive_threshold": 0.45,
+    "forecast_label": "same 0.45 trigger for all",
+    "capacity_source": "per-link metadata file",
+    "last_observation_file": "res_STACK_GEANT_CAP/last_observed_test.npy"
+  },
+  "routing": {
+    "static": {
+      "mean_max_link_util": 0.4917876720428467,
+      "p95_max_link_util": 0.7245364785194397,
+      "steps_with_congestion_%": 0.0,
+      "overload_traffic_%": 0.0,
+      "steps_above_trigger_%": 55.090568394753284,
+      "over_trigger_traffic_proxy_%": 0.44666439294815063,
+      "avg_flows_rerouted": 0.0,
+      "path_stretch": 1.0
+    },
+    "reactive (last matrix)": {
+      "mean_max_link_util": 0.4124132990837097,
+      "p95_max_link_util": 0.5349046587944031,
+      "steps_with_congestion_%": 0.0,
+      "overload_traffic_%": 0.0,
+      "steps_above_trigger_%": 27.232979387882573,
+      "over_trigger_traffic_proxy_%": 0.09132787585258484,
+      "avg_flows_rerouted": 2.191755153029357,
+      "path_stretch": 1.0021291971206665
+    },
+    "proactive (same 0.45 trigger for all)": {
+      "mean_max_link_util": 0.415621280670166,
+      "p95_max_link_util": 0.5189600586891174,
+      "steps_with_congestion_%": 0.0,
+      "overload_traffic_%": 0.0,
+      "steps_above_trigger_%": 28.169893816364773,
+      "over_trigger_traffic_proxy_%": 0.09428022056818008,
+      "avg_flows_rerouted": 2.211742660836977,
+      "path_stretch": 1.002013921737671
+    },
+    "hybrid (max fcst, last)": {
+      "mean_max_link_util": 0.4001431167125702,
+      "p95_max_link_util": 0.5088200569152832,
+      "steps_with_congestion_%": 0.0,
+      "overload_traffic_%": 0.0,
+      "steps_above_trigger_%": 20.362273579013117,
+      "over_trigger_traffic_proxy_%": 0.05566365271806717,
+      "avg_flows_rerouted": 2.76264834478451,
+      "path_stretch": 1.0029395818710327
+    },
+    "oracle (true matrix)": {
+      "mean_max_link_util": 0.4049516022205353,
+      "p95_max_link_util": 0.48397117853164673,
+      "steps_with_congestion_%": 0.0,
+      "overload_traffic_%": 0.0,
+      "steps_above_trigger_%": 10.680824484697064,
+      "over_trigger_traffic_proxy_%": 0.01647903025150299,
+      "avg_flows_rerouted": 2.1911305434103685,
+      "path_stretch": 1.0021252632141113
+    }
+  },
+  "detection": {
+    "last observed (4 step(s) old)": {
+      "link_load_RMSE_%cap": 1.3046718835830688,
+      "precision": 0.8578767123287672,
+      "recall": 0.8578767123287672,
+      "F1": 0.8578767123287672,
+      "true_congested_events": 1168
+    },
+    "same 0.45 trigger for all forecast": {
+      "link_load_RMSE_%cap": 1.0195165872573853,
+      "precision": 0.8903625110521662,
+      "recall": 0.8621575342465754,
+      "F1": 0.8760330578512396,
+      "true_congested_events": 1168
+    },
+    "hybrid (max fcst, last)": {
+      "link_load_RMSE_%cap": 1.205013394355774,
+      "precision": 0.802660753880266,
+      "recall": 0.9297945205479452,
+      "F1": 0.8615628718762396,
+      "true_congested_events": 1168
+    }
+  }
+}

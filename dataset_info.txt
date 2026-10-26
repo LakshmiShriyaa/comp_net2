@@ -1,0 +1,10 @@
+Abilene shape: (48096, 12, 12)
+Abilene nodes: ATLA-M5, ATLAng, CHINng, DNVRng, HSTNng, IPLSng, KSCYng, LOSAng, NYCMng, SNVAng, STTLng, WASHng
+Abilene sampling: 5 minutes
+Units: kbps
+
+GEANT shape: (10772, 23, 23)
+GEANT nodes: 12, 13, 19, 23, 8, 18, 4, 1, 5, 3, 10, 22, 7, 2, 6, 16, 14, 20, 11, 9, 17, 21, 15
+GEANT sampling: 15 minutes
+Units: kbps
+GEANT unique undirected edges: 37
