@@ -206,11 +206,78 @@ def optimize_overflow(pt: PathTable, demand, cap, thr=0.8, max_moves=100):
     return choice
 
 
+def optimize_overflow_persistent(pt: PathTable, demand, cap, thr, previous,
+                                 penalty=0.0, max_moves=100, objective="overflow",
+                                 max_changes=None):
+    """Overflow optimizer that starts from the last route assignment.
+
+    The objective is squared utilization excess above ``thr`` plus a penalty
+    for changing flows from ``previous``. ``max_moves`` is a hard upper bound
+    on whole-flow path changes in this interval.
+    """
+    demand = np.maximum(np.asarray(demand, dtype=np.float32), 0)
+    cap = _capacity_vector(cap, pt.E)
+    previous = np.asarray(previous, dtype=int)
+    if previous.shape != (len(demand),):
+        raise ValueError("previous route vector must have one path index per flow")
+    if penalty < 0:
+        raise ValueError("reroute penalty must be non-negative")
+    if max_changes is not None and max_changes < 0:
+        raise ValueError("max_changes must be non-negative or None")
+
+    choice = previous.copy()
+    flow_idx = np.arange(len(demand))
+    load = pt.loads(demand, choice)
+
+    if objective not in ("overflow", "minmax"):
+        raise ValueError("objective must be 'overflow' or 'minmax'")
+
+    def score(values, routes):
+        util = values / cap
+        route_cost = penalty * np.count_nonzero(routes != previous)
+        if objective == "minmax":
+            return float(util.max() + route_cost)
+        excess = np.maximum(values / cap - thr, 0.0)
+        return float(excess @ excess + route_cost)
+
+    current = score(load, choice)
+    for _ in range(max_moves):
+        util = load / cap
+        if util.max() <= thr:
+            break
+        worst = int(util.argmax())
+        active = np.where((pt.A[flow_idx, choice, worst] > 0) & (demand > 0))[0]
+        best_score, best_move = current - 1e-12, None
+        for f in active:
+            old_path = pt.A[f, choice[f]]
+            for p in range(pt.k):
+                if p == choice[f] or not pt.valid[f, p]:
+                    continue
+                candidate_load = load - demand[f] * old_path + demand[f] * pt.A[f, p]
+                route_delta = int(p != previous[f]) - int(choice[f] != previous[f])
+                candidate_routes = choice.copy()
+                candidate_routes[f] = p
+                if (max_changes is not None and
+                        np.count_nonzero(candidate_routes != previous) > max_changes):
+                    continue
+                candidate_score = score(candidate_load, candidate_routes)
+                if candidate_score < best_score:
+                    best_score, best_move = candidate_score, (f, p, candidate_load)
+        if best_move is None:
+            break
+        f, p, load = best_move
+        choice[f] = p
+        current = best_score
+    return choice
+
+
 # ----------------------------------------------------------------------------
 # Evaluation
 # ----------------------------------------------------------------------------
 def evaluate(pt, true, pred, thr, cap_pct, cap_util, lag=1, proactive_thr=None,
-             capacity=None, last_observed=None, forecast_label="CNN-LSTM", optimizer="minmax"):
+             capacity=None, last_observed=None, forecast_label="CNN-LSTM", optimizer="minmax",
+             persistent=False, reroute_penalty=0.0, max_moves=100,
+             persistent_objective="overflow", max_route_changes=None):
     T = len(true)
     dem_true = [pt.demand_vector(true[t]) for t in range(T)]
     dem_pred = [pt.demand_vector(pred[t]) for t in range(T)]
@@ -233,17 +300,37 @@ def evaluate(pt, true, pred, thr, cap_pct, cap_util, lag=1, proactive_thr=None,
 
     pthr = thr if proactive_thr is None else proactive_thr     # threshold the proactive controller acts on
     optimize_fn = optimize if optimizer == "minmax" else optimize_overflow
+
+    def controller_routes(demands, threshold):
+        previous = zero.copy()
+        choices = []
+        for demand in demands:
+            if persistent:
+                choice = optimize_overflow_persistent(
+                    pt, demand, cap, threshold, previous, reroute_penalty, max_moves,
+                    persistent_objective, max_route_changes)
+            else:
+                choice = optimize_fn(pt, demand, cap, threshold)
+            choices.append(choice)
+            previous = choice.copy()
+        return choices
+
+    reactive_choices = controller_routes(dem_last, thr)
+    proactive_choices = controller_routes(dem_pred, pthr)
+    hybrid_choices = controller_routes(dem_hyb, pthr)
+    oracle_choices = controller_routes(dem_true, thr)
     schemes = {
         "static": lambda t: zero,
-        "reactive (last matrix)": lambda t: optimize_fn(pt, dem_last[t], cap, thr),
-        f"proactive ({forecast_label})": lambda t: optimize_fn(pt, dem_pred[t], cap, pthr),
-        "hybrid (max fcst, last)": lambda t: optimize_fn(pt, dem_hyb[t], cap, pthr),
-        "oracle (true matrix)": lambda t: optimize_fn(pt, dem_true[t], cap, thr),
+        "reactive (last matrix)": lambda t: reactive_choices[t],
+        f"proactive ({forecast_label})": lambda t: proactive_choices[t],
+        "hybrid (max fcst, last)": lambda t: hybrid_choices[t],
+        "oracle (true matrix)": lambda t: oracle_choices[t],
     }
 
     out = {}
     for name, route in schemes.items():
-        max_util, congested, above_trigger, overload, over_trigger, rerouted, stretch = [], [], [], [], [], [], []
+        max_util, congested, above_trigger, overload, over_trigger, rerouted, stretch, route_changes = [], [], [], [], [], [], [], []
+        previous = zero.copy()
         for t in range(T):
             ch = route(t)
             load = pt.loads(dem_true[t], ch)
@@ -255,6 +342,8 @@ def evaluate(pt, true, pred, thr, cap_pct, cap_util, lag=1, proactive_thr=None,
             overload.append(np.maximum(load - cap, 0).sum() / total)   # proxy for dropped-traffic fraction
             over_trigger.append(np.maximum(load - thr * cap, 0).sum() / total)
             rerouted.append(int((ch != 0).sum()))
+            route_changes.append(int((ch != previous).sum()))
+            previous = ch.copy()
             h_new = (dem_true[t] * pt.costs[np.arange(len(ch)), ch]).sum()
             h_old = (dem_true[t] * pt.costs[:, 0]).sum()
             stretch.append(h_new / max(h_old, 1e-9))
@@ -266,6 +355,7 @@ def evaluate(pt, true, pred, thr, cap_pct, cap_util, lag=1, proactive_thr=None,
             "steps_above_trigger_%": float(np.mean(above_trigger) * 100),
             "over_trigger_traffic_proxy_%": float(np.mean(over_trigger) * 100),
             "avg_flows_rerouted": float(np.mean(rerouted)),
+            "avg_route_changes_per_step": float(np.mean(route_changes)),
             "path_stretch": float(np.mean(stretch)),
         }
     return out, cap
@@ -324,6 +414,16 @@ def main():
                     help="threshold the PROACTIVE controller acts on (default = --thr). Forecasts trained with squared error shrink peaks, so a value below --thr adds a safety margin")
     ap.add_argument("--optimizer", choices=("minmax", "overflow"), default="minmax",
                     help="greedy objective: lower worst link (minmax) or total squared overload (overflow)")
+    ap.add_argument("--persistent", action="store_true",
+                    help="warm-start each controller from its own previous routes")
+    ap.add_argument("--reroute-penalty", type=float, default=0.0,
+                    help="persistent-policy cost per flow moved away from its previous path")
+    ap.add_argument("--persistent-objective", choices=("overflow", "minmax"), default="overflow",
+                    help="persistent objective: total squared threshold excess or peak utilization")
+    ap.add_argument("--max-moves", type=int, default=100,
+                    help="maximum whole-flow path changes per interval for --persistent")
+    ap.add_argument("--max-route-changes", type=int, default=None,
+                    help="optional hard limit on final whole-flow route changes per interval for --persistent")
     ap.add_argument("--margin-sweep", action="store_true",
                     help="rerun reactive / proactive / oracle at several controller thresholds (fair comparison)")
     ap.add_argument("--sweep", action="store_true", help="also print forecast detection quality at several flag thresholds")
@@ -332,6 +432,10 @@ def main():
     ap.add_argument("--forecast-label", default="CNN-LSTM",
                     help="label for pred_test.npy in the saved routing report")
     args = ap.parse_args()
+    if args.persistent and args.optimizer != "overflow":
+        ap.error("--persistent currently requires --optimizer overflow")
+    if args.reroute_penalty < 0 or args.max_moves < 1:
+        ap.error("--reroute-penalty must be non-negative and --max-moves must be positive")
 
     true = np.load(f"{args.results}/true_test.npy")
     pred = np.load(f"{args.results}/pred_test.npy")
@@ -357,7 +461,9 @@ def main():
         raise ValueError("last_observed_test.npy must have the same number of rows as true_test.npy")
     res, cap = evaluate(pt, true, pred, args.thr, args.cap_pct, args.cap_util,
                         args.lag, args.proactive_thr, capacity, last_observed,
-                        args.forecast_label, args.optimizer)
+                        args.forecast_label, args.optimizer, args.persistent,
+                        args.reroute_penalty, args.max_moves,
+                        args.persistent_objective, args.max_route_changes)
     if np.ndim(cap) == 0:
         print(f"Uniform link capacity = {cap:.1f} traffic units, congestion threshold = {args.thr:.0%}\n")
     else:
@@ -398,7 +504,11 @@ def main():
         for t_ in (0.85, 0.80, 0.75, 0.70):
             r_, _ = evaluate(pt, true, pred, t_, args.cap_pct, args.cap_util, args.lag,
                              capacity=capacity, last_observed=last_observed,
-                             forecast_label=args.forecast_label, optimizer=args.optimizer)
+                             forecast_label=args.forecast_label, optimizer=args.optimizer,
+                             persistent=args.persistent, reroute_penalty=args.reroute_penalty,
+                                 max_moves=args.max_moves,
+                                 persistent_objective=args.persistent_objective,
+                                 max_route_changes=args.max_route_changes)
             cells = []
             for key in ("reactive (last matrix)", f"proactive ({args.forecast_label})",
                         "hybrid (max fcst, last)", "oracle (true matrix)"):
@@ -415,6 +525,11 @@ def main():
                                  "k_paths": args.k, "routing_objective": args.optimizer,
                                  "capacity": cap_json, "link_capacities": link_caps_json,
                                  "link_metadata_file": args.link_metadata,
+                                 "persistent_routes": args.persistent,
+                                 "reroute_penalty": args.reroute_penalty,
+                                 "persistent_objective": args.persistent_objective,
+                                 "max_route_changes": args.max_route_changes,
+                                 "max_moves_per_interval": args.max_moves,
                                  "link_metadata_provenance": (
                                      "IGen geant-20041125.gml; unique graph-isomorphism match to "
                                      "the anonymized 23-node, 37-link topology; bandwidth converted to kbps"

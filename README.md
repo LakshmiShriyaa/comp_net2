@@ -8,6 +8,8 @@ The validation-CV-selected per-OD stack forecasts one hour ahead. On the examine
 
 For routing, an archived 2004 GÉANT topology supplies assumed per-link capacities and IGP weights, uniquely matched to the anonymized graph. With 5 candidate paths, the overflow objective, and a common 45% trigger, proactive routing did not improve the 45%-threshold exceedance rate over reactive routing (28.17% vs. 27.23%). The forecast did lower link-load RMSE from 1.305% to 1.020% of capacity. No link exceeded full capacity in the observed test data under these assumptions. This test set was examined during iterative development; results are exploratory and do not establish a QoS gain. See [PROJECT_RESULTS.md](PROJECT_RESULTS.md) for provenance and caveats.
 
+In a stricter replay with the same validation-selected 55% trigger and a hard limit of three route changes per 15-minute interval, the forecast-driven router reduced mean peak utilization from 0.398 to 0.373 (about 6.2%); the paired 95% moving-block interval for the reduction was 1.24 to 4.69 percentage points of link capacity. One interval above 70% became zero, but that event-count result was uncertain and neither controller overloaded a link. The improvement was not consistent in synthetic capacity stress tests. See `res_STACK_GEANT_CAP/policy_hardcap_results_real.md` and the full caveats in [PROJECT_RESULTS.md](PROJECT_RESULTS.md).
+
 A separate route-stability experiment used validation-selected thresholds (70% reactive, 45% proactive); within its proactive comparison, persistence reduced route changes by 99.5% and intervals above 70% utilization to zero. It reroutes more flows (7.28 per interval) and adds 0.88% mean IGP path cost. This is a separate policy result, not a matched-threshold comparison; see the report.
 
 ## Install
@@ -39,6 +41,7 @@ py fair_routing_eval.py --results res_STACK_GEANT_CAP --val-results res_STACK_BE
 py fair_routing_eval.py --results res_STACK_GEANT_CAP --val-results res_STACK_BEST --nodes 23 --edges geant_edges.txt --link-metadata geant_link_capacities.csv --k 5 --optimizer overflow --triggers 0.45 0.55 0.70 --report-thr 0.70 --budget 3 --hybrid --boot 2000 --block 96 --cap-scale 0.35 --out res_STACK_GEANT_CAP/stress_35pct
 py routing_advanced_experiments.py --scales 1.0 0.35 --trigger 0.55 --report-threshold 0.70 --budget 3 --reroute-penalties 0 0.003 0.01 0.03 0.1 --mcf-penalties 0.01 0.1 --out res_STACK_GEANT_CAP/advanced_routing
 py make_advanced_routing_summary.py
+py routing_policy_fair_eval.py --scales 1.0 --boot 1000 --out res_STACK_GEANT_CAP/policy_hardcap_results_real.json
 ```
 
 The final compact tables are `res_STACK_GEANT_CAP/routing_summary.md`, `routing_comparison.csv`, and `routing_stability_comparison.csv`. The 2004 capacity/metric mapping is in `geant_link_capacities.csv`; the previous uniform-capacity stress replay remains available in `res_STACK_BEST`. `over_trigger_traffic_proxy_%` is a simulator proxy, not measured packet loss.

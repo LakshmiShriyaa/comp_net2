@@ -1,0 +1,1680 @@
+{
+  "setup": {
+    "results": "res_STACK_GEANT_CAP",
+    "val_results": "res_STACK_BEST",
+    "edges": "geant_edges.txt",
+    "link_metadata": "geant_link_capacities.csv",
+    "triggers": [
+      0.45,
+      0.55,
+      0.7
+    ],
+    "penalties": [
+      0.0,
+      0.003,
+      0.01,
+      0.03,
+      0.1
+    ],
+    "report_threshold": 0.7,
+    "budget": 3.0,
+    "scales": [
+      1.0
+    ],
+    "boot": 1000,
+    "block": 96,
+    "out": "res_STACK_GEANT_CAP/policy_hardcap_results_real.json"
+  },
+  "scenarios": {
+    "1.0": {
+      "capacity_scale": 1.0,
+      "capacity_note": "1.0 uses archived capacities; other scales are synthetic stress scenarios",
+      "average_route_change_budget": 3.0,
+      "hard_route_change_cap_per_step": 3,
+      "validation_selection": {
+        "selected_common_controller": {
+          "policy": "independent_overflow",
+          "trigger": 0.55,
+          "penalty": 0.0,
+          "independent_max_moves": 100,
+          "budget_met_for_both_inputs": true,
+          "selection_score": [
+            0.0005470196074276214,
+            0.18738288569643974,
+            0.02560899437851343,
+            0.3274253539969071,
+            1.0106382356437638
+          ],
+          "reactive_metrics": {
+            "steps_above_report_threshold_pct": 0.18738288569643974,
+            "traffic_proxy_above_report_threshold_pct": 0.0005462646275249162,
+            "physical_overload_traffic_pct": 0.0002595509921923643,
+            "mean_peak_utilization": 0.32776000317672427,
+            "p95_peak_utilization": 0.556389331817627,
+            "route_changes_per_step": 0.02560899437851343,
+            "max_route_changes_in_step": 3,
+            "alternate_flows_per_step": 13.916926920674578,
+            "mean_igp_cost_stretch": 1.0109062701509188
+          },
+          "proactive_metrics": {
+            "steps_above_report_threshold_pct": 0.18738288569643974,
+            "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+            "physical_overload_traffic_pct": 0.0002602255466317922,
+            "mean_peak_utilization": 0.32709070481708985,
+            "p95_peak_utilization": 0.5550534129142761,
+            "route_changes_per_step": 0.011867582760774516,
+            "max_route_changes_in_step": 3,
+            "alternate_flows_per_step": 14.928794503435354,
+            "mean_igp_cost_stretch": 1.0103702011366085
+          }
+        },
+        "candidate_pairs": [
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005470196074276214,
+              0.18738288569643974,
+              0.02560899437851343,
+              0.3274253539969071,
+              1.0106382356437638
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005462646275249162,
+              "physical_overload_traffic_pct": 0.0002595509921923643,
+              "mean_peak_utilization": 0.32776000317672427,
+              "p95_peak_utilization": 0.556389331817627,
+              "route_changes_per_step": 0.02560899437851343,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 13.916926920674578,
+              "mean_igp_cost_stretch": 1.0109062701509188
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.32709070481708985,
+              "p95_peak_utilization": 0.5550534129142761,
+              "route_changes_per_step": 0.011867582760774516,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 14.928794503435354,
+              "mean_igp_cost_stretch": 1.0103702011366085
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005472805220860613,
+              0.18738288569643974,
+              0.024984384759525295,
+              0.327771141869176,
+              1.010637676404317
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005463564927386659,
+              "physical_overload_traffic_pct": 0.0002595509921923643,
+              "mean_peak_utilization": 0.3278253758459967,
+              "p95_peak_utilization": 0.5570283532142639,
+              "route_changes_per_step": 0.024984384759525295,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 12.457214241099313,
+              "mean_igp_cost_stretch": 1.0109061509335302
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005482045514334568,
+              "physical_overload_traffic_pct": 0.00026017293068746116,
+              "mean_peak_utilization": 0.32771690789235525,
+              "p95_peak_utilization": 0.5582448840141296,
+              "route_changes_per_step": 0.009993753903810118,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 11.586508432229856,
+              "mean_igp_cost_stretch": 1.0103692018751038
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005477745873303264,
+              0.18738288569643974,
+              0.01311680199875078,
+              0.3316735579428042,
+              1.0103792495810962
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.33136136447318565,
+              "p95_peak_utilization": 0.5471073389053345,
+              "route_changes_per_step": 0.01311680199875078,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 14.83947532792005,
+              "mean_igp_cost_stretch": 1.0103797974598054
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.33198575141242265,
+              "p95_peak_utilization": 0.5508505702018738,
+              "route_changes_per_step": 0.011867582760774516,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 13.463460337289193,
+              "mean_igp_cost_stretch": 1.010378701702387
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005477745873303264,
+              0.18738288569643974,
+              0.014366021236727046,
+              0.331668141231099,
+              1.010379992212062
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.3316457936217977,
+              "p95_peak_utilization": 0.5471073389053345,
+              "route_changes_per_step": 0.014366021236727046,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.511555277951281,
+              "mean_igp_cost_stretch": 1.0103808432935313
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.33169048884040037,
+              "p95_peak_utilization": 0.5505899786949158,
+              "route_changes_per_step": 0.011867582760774516,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.151780137414116,
+              "mean_igp_cost_stretch": 1.0103791411305927
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005477745873303264,
+              0.18738288569643974,
+              0.014366021236727046,
+              0.331668141231099,
+              1.010379992212062
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.3316457936217977,
+              "p95_peak_utilization": 0.5471073389053345,
+              "route_changes_per_step": 0.014366021236727046,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.511555277951281,
+              "mean_igp_cost_stretch": 1.0103808432935313
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.33169048884040037,
+              "p95_peak_utilization": 0.5505899786949158,
+              "route_changes_per_step": 0.011867582760774516,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.151780137414116,
+              "mean_igp_cost_stretch": 1.0103791411305927
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005477745873303264,
+              0.18738288569643974,
+              0.014366021236727046,
+              0.331668141231099,
+              1.010379992212062
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.3316457936217977,
+              "p95_peak_utilization": 0.5471073389053345,
+              "route_changes_per_step": 0.014366021236727046,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.511555277951281,
+              "mean_igp_cost_stretch": 1.0103808432935313
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.33169048884040037,
+              "p95_peak_utilization": 0.5505899786949158,
+              "route_changes_per_step": 0.011867582760774516,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 15.151780137414116,
+              "mean_igp_cost_stretch": 1.0103791411305927
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005484173784199998,
+              0.18738288569643974,
+              0.007495315427857589,
+              0.3267400645831836,
+              1.0108086830773906
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005476595372162867,
+              "physical_overload_traffic_pct": 0.00026041640667971933,
+              "mean_peak_utilization": 0.3263596774152783,
+              "p95_peak_utilization": 0.5498515367507935,
+              "route_changes_per_step": 0.007495315427857589,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 7.292941911305434,
+              "mean_igp_cost_stretch": 1.011054974815005
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3271204517510889,
+              "p95_peak_utilization": 0.5487914085388184,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 6.194878201124297,
+              "mean_igp_cost_stretch": 1.0105623913397759
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005484749034770196,
+              0.18738288569643974,
+              0.01311680199875078,
+              0.3239479951472077,
+              1.0105678316408957
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.323266593312413,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.01311680199875078,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 16.955028107432856,
+              "mean_igp_cost_stretch": 1.0104747616397116
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3246293969820024,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 6.330418488444722,
+              "mean_igp_cost_stretch": 1.0106609016420796
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005484749034770196,
+              0.18738288569643974,
+              0.01311680199875078,
+              0.3239519221802416,
+              1.0105678281136499
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005477745873303264,
+              "physical_overload_traffic_pct": 0.0002602255466317922,
+              "mean_peak_utilization": 0.3232744473784808,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.01311680199875078,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 16.697688944409744,
+              "mean_igp_cost_stretch": 1.0104747545852202
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3246293969820024,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 6.330418488444722,
+              "mean_igp_cost_stretch": 1.0106609016420796
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005491752196237128,
+              0.18738288569643974,
+              0.009369144284821987,
+              0.32371751554566275,
+              1.0106620340952768
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3239789523887009,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.009369144284821987,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 6.740787008119925,
+              "mean_igp_cost_stretch": 1.0106617093814947
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3234560787026246,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 6.456589631480325,
+              "mean_igp_cost_stretch": 1.0106623588090589
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005494292788735253,
+              0.21861336664584635,
+              0.009369144284821987,
+              0.32542007745038265,
+              1.0105643682913317
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.000549683338123338,
+              "physical_overload_traffic_pct": 0.000259283753222484,
+              "mean_peak_utilization": 0.32599583685137495,
+              "p95_peak_utilization": 0.5464974641799927,
+              "route_changes_per_step": 0.009369144284821987,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 9.817613991255465,
+              "mean_igp_cost_stretch": 1.0104679969539612
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.32484431804939035,
+              "p95_peak_utilization": 0.5428139567375183,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 6.216114928169894,
+              "mean_igp_cost_stretch": 1.0106607396287024
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.003,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005516689655324364,
+              0.21861336664584635,
+              0.006246096189881324,
+              0.3308583707557403,
+              1.0106185910704923
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005491752196237128,
+              "physical_overload_traffic_pct": 0.00026109546939519554,
+              "mean_peak_utilization": 0.3273340825975723,
+              "p95_peak_utilization": 0.5463133454322815,
+              "route_changes_per_step": 0.006246096189881324,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 6.077451592754528,
+              "mean_igp_cost_stretch": 1.0106562466020275
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.00055416271144116,
+              "physical_overload_traffic_pct": 0.00026007755883480146,
+              "mean_peak_utilization": 0.3343826589139084,
+              "p95_peak_utilization": 0.5539271235466003,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 4.181136789506558,
+              "mean_igp_cost_stretch": 1.0105809355389572
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005598623143188506,
+              0.21861336664584635,
+              0.013741411617738912,
+              0.3274545432309819,
+              1.0106459664558738
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005484347589148778,
+              "physical_overload_traffic_pct": 0.0002605366467647743,
+              "mean_peak_utilization": 0.32069278296681214,
+              "p95_peak_utilization": 0.5425285696983337,
+              "route_changes_per_step": 0.013741411617738912,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 17.45846346033729,
+              "mean_igp_cost_stretch": 1.0106349540934183
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005712898697228235,
+              "physical_overload_traffic_pct": 0.0002598535993149845,
+              "mean_peak_utilization": 0.3342163034951516,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.013741411617738912,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 17.743285446595877,
+              "mean_igp_cost_stretch": 1.0106569788183293
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005598623143188506,
+              0.21861336664584635,
+              0.014990630855715179,
+              0.3266973489712805,
+              1.0106484363511652
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005484347589148778,
+              "physical_overload_traffic_pct": 0.0002605366467647743,
+              "mean_peak_utilization": 0.319203664192105,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.014990630855715179,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.818238600874455,
+              "mean_igp_cost_stretch": 1.0106398140636055
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005712898697228235,
+              "physical_overload_traffic_pct": 0.0002598535993149845,
+              "mean_peak_utilization": 0.334191033750456,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.013741411617738912,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.780762023735164,
+              "mean_igp_cost_stretch": 1.0106570586387251
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005598623143188506,
+              0.21861336664584635,
+              0.014990630855715179,
+              0.3266973489712805,
+              1.0106484363511652
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005484347589148778,
+              "physical_overload_traffic_pct": 0.0002605366467647743,
+              "mean_peak_utilization": 0.319203664192105,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.014990630855715179,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.818238600874455,
+              "mean_igp_cost_stretch": 1.0106398140636055
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005712898697228235,
+              "physical_overload_traffic_pct": 0.0002598535993149845,
+              "mean_peak_utilization": 0.334191033750456,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.013741411617738912,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.780762023735164,
+              "mean_igp_cost_stretch": 1.0106570586387251
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005598623143188506,
+              0.21861336664584635,
+              0.014990630855715179,
+              0.3266973489712805,
+              1.0106484363511652
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.18738288569643974,
+              "traffic_proxy_above_report_threshold_pct": 0.0005484347589148778,
+              "physical_overload_traffic_pct": 0.0002605366467647743,
+              "mean_peak_utilization": 0.319203664192105,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.014990630855715179,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.818238600874455,
+              "mean_igp_cost_stretch": 1.0106398140636055
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005712898697228235,
+              "physical_overload_traffic_pct": 0.0002598535993149845,
+              "mean_peak_utilization": 0.334191033750456,
+              "p95_peak_utilization": 0.542106032371521,
+              "route_changes_per_step": 0.013741411617738912,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 17.780762023735164,
+              "mean_igp_cost_stretch": 1.0106570586387251
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0005599632878862857,
+              0.24984384759525297,
+              0.011242973141786383,
+              0.33142907553579865,
+              1.010630277532373
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005579142900562493,
+              "physical_overload_traffic_pct": 0.00025782819085758526,
+              "mean_peak_utilization": 0.3313701357471429,
+              "p95_peak_utilization": 0.5642063617706299,
+              "route_changes_per_step": 0.011242973141786383,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 7.106183635227983,
+              "mean_igp_cost_stretch": 1.0108992813699318
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0005620122857163221,
+              "physical_overload_traffic_pct": 0.00013435687893055738,
+              "mean_peak_utilization": 0.3314880153244544,
+              "p95_peak_utilization": 0.5642302632331848,
+              "route_changes_per_step": 0.004996876951905059,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 6.013116801998751,
+              "mean_igp_cost_stretch": 1.0103612736948144
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.01,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0006982176859853214,
+              0.24984384759525297,
+              0.004372267332916927,
+              0.3387752841415813,
+              1.0103627605390322
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0006982176859853214,
+              "physical_overload_traffic_pct": 0.0004497165910941522,
+              "mean_peak_utilization": 0.3392808216761828,
+              "p95_peak_utilization": 0.5692810416221619,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 5.031855090568395,
+              "mean_igp_cost_stretch": 1.0103625512547736
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.24984384759525297,
+              "traffic_proxy_above_report_threshold_pct": 0.0006982176859853214,
+              "physical_overload_traffic_pct": 0.0004497165910941522,
+              "mean_peak_utilization": 0.3382697466069799,
+              "p95_peak_utilization": 0.5660900473594666,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 5.1024359775140535,
+              "mean_igp_cost_stretch": 1.0103629698232908
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0007424062946748057,
+              0.8119925046845722,
+              0.0037476577139287947,
+              0.3648374994040503,
+              1.0107584193379007
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.8119925046845722,
+              "traffic_proxy_above_report_threshold_pct": 0.0007411940135646362,
+              "physical_overload_traffic_pct": 0.0002037493400345513,
+              "mean_peak_utilization": 0.3646707773431996,
+              "p95_peak_utilization": 0.6255016922950745,
+              "route_changes_per_step": 0.0037476577139287947,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 3.8388507183010616,
+              "mean_igp_cost_stretch": 1.0110038453600838
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.8119925046845722,
+              "traffic_proxy_above_report_threshold_pct": 0.0007436185757849752,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.3650042214649011,
+              "p95_peak_utilization": 0.6218432188034058,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.848844472204872,
+              "mean_igp_cost_stretch": 1.0105129933157175
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0008086938233520379,
+              0.7183010618363523,
+              0.005621486570893191,
+              0.36971472751472534,
+              1.0103768680219427
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.8119925046845722,
+              "traffic_proxy_above_report_threshold_pct": 0.0007436171542237374,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.36662164971762934,
+              "p95_peak_utilization": 0.617203414440155,
+              "route_changes_per_step": 0.004372267332916927,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.505933791380387,
+              "mean_igp_cost_stretch": 1.0105523650648336
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.6246096189881324,
+              "traffic_proxy_above_report_threshold_pct": 0.0008737704924803383,
+              "physical_overload_traffic_pct": 0.0004623040759343791,
+              "mean_peak_utilization": 0.37280780531182134,
+              "p95_peak_utilization": 0.6060396432876587,
+              "route_changes_per_step": 0.005621486570893191,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1193004372267334,
+              "mean_igp_cost_stretch": 1.0102013709790518
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.003,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0010324746602382697,
+              0.4059962523422861,
+              0.004996876951905059,
+              0.3413705205839176,
+              1.0105228150458905
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.3123048094940662,
+              "traffic_proxy_above_report_threshold_pct": 0.0005659192528361952,
+              "physical_overload_traffic_pct": 0.00026007755883480146,
+              "mean_peak_utilization": 0.34040030562490464,
+              "p95_peak_utilization": 0.5704224109649658,
+              "route_changes_per_step": 0.004996876951905059,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 4.5040599625234226,
+              "mean_igp_cost_stretch": 1.0105235707714197
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.49968769519050593,
+              "traffic_proxy_above_report_threshold_pct": 0.0014990300676403442,
+              "physical_overload_traffic_pct": 0.0002594506176075736,
+              "mean_peak_utilization": 0.34234073554293054,
+              "p95_peak_utilization": 0.5690785050392151,
+              "route_changes_per_step": 0.0024984384759525295,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 3.614615865084322,
+              "mean_igp_cost_stretch": 1.0105220593203612
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.03,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0033026989650209743,
+              0.6870705808869457,
+              0.003123048094940662,
+              0.36843745575183484,
+              1.0100384571554963
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.5621486570893192,
+              "traffic_proxy_above_report_threshold_pct": 0.0028622539740433077,
+              "physical_overload_traffic_pct": 0.0004515504123623262,
+              "mean_peak_utilization": 0.36679286243095016,
+              "p95_peak_utilization": 0.6006984710693359,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 3.1524047470331045,
+              "mean_igp_cost_stretch": 1.0100520044817256
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.8119925046845722,
+              "traffic_proxy_above_report_threshold_pct": 0.0037431439559986414,
+              "physical_overload_traffic_pct": 0.0004515504123623262,
+              "mean_peak_utilization": 0.3700820490727195,
+              "p95_peak_utilization": 0.6074419021606445,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.7738913179262963,
+              "mean_igp_cost_stretch": 1.0100249098292673
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0033169886189877065,
+              1.3741411617738915,
+              0.006246096189881324,
+              0.45317017587645214,
+              1.0008844329957647
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.2492192379762648,
+              "traffic_proxy_above_report_threshold_pct": 0.0032526657145272165,
+              "physical_overload_traffic_pct": 0.00028189025623846027,
+              "mean_peak_utilization": 0.4453387191934484,
+              "p95_peak_utilization": 0.6213396787643433,
+              "route_changes_per_step": 0.006246096189881324,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 3.1349156777014366,
+              "mean_igp_cost_stretch": 1.0010785296751066
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.003381311523448196,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4610016325594558,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8338538413491567,
+              "mean_igp_cost_stretch": 1.000690336316423
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0033169886189877065,
+              1.3741411617738915,
+              0.006246096189881324,
+              0.45317017587645214,
+              1.0008844329957647
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.2492192379762648,
+              "traffic_proxy_above_report_threshold_pct": 0.0032526657145272165,
+              "physical_overload_traffic_pct": 0.00028189025623846027,
+              "mean_peak_utilization": 0.4453387191934484,
+              "p95_peak_utilization": 0.6213396787643433,
+              "route_changes_per_step": 0.006246096189881324,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 3.1349156777014366,
+              "mean_igp_cost_stretch": 1.0010785296751066
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.003381311523448196,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4610016325594558,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8338538413491567,
+              "mean_igp_cost_stretch": 1.000690336316423
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0033169886189877065,
+              1.3741411617738915,
+              0.006246096189881324,
+              0.45317017587645214,
+              1.0008844329957647
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.2492192379762648,
+              "traffic_proxy_above_report_threshold_pct": 0.0032526657145272165,
+              "physical_overload_traffic_pct": 0.00028189025623846027,
+              "mean_peak_utilization": 0.4453387191934484,
+              "p95_peak_utilization": 0.6213396787643433,
+              "route_changes_per_step": 0.006246096189881324,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 3.1349156777014366,
+              "mean_igp_cost_stretch": 1.0010785296751066
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.003381311523448196,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4610016325594558,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8338538413491567,
+              "mean_igp_cost_stretch": 1.000690336316423
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.003318306038367095,
+              1.3116801998750782,
+              0.007495315427857589,
+              0.45109210568692515,
+              1.0008909656622218
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.1242973141786383,
+              "traffic_proxy_above_report_threshold_pct": 0.0032553005532859947,
+              "physical_overload_traffic_pct": 0.0002836756498961803,
+              "mean_peak_utilization": 0.44118257881439454,
+              "p95_peak_utilization": 0.6068049669265747,
+              "route_changes_per_step": 0.007495315427857589,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 4.978763272954404,
+              "mean_igp_cost_stretch": 1.0010915950080204
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.003381311523448196,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4610016325594558,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8338538413491567,
+              "mean_igp_cost_stretch": 1.000690336316423
+            }
+          },
+          {
+            "policy": "independent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.0033867103867066283,
+              1.499063085571518,
+              0.0024984384759525295,
+              0.4610752029336296,
+              1.0006904329647586
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.0033921092499650607,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4611487733078033,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0024984384759525295,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8469706433479076,
+              "mean_igp_cost_stretch": 1.0006905296130941
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.003381311523448196,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4610016325594558,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.8338538413491567,
+              "mean_igp_cost_stretch": 1.000690336316423
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.01,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.003749849308907442,
+              0.8432229856339788,
+              0.003123048094940662,
+              0.36800794948885995,
+              1.0102253649461264
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.6870705808869456,
+              "traffic_proxy_above_report_threshold_pct": 0.002763397243369781,
+              "physical_overload_traffic_pct": 0.0002594506176075736,
+              "mean_peak_utilization": 0.3621696094789779,
+              "p95_peak_utilization": 0.5794612169265747,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 3.24422236102436,
+              "mean_igp_cost_stretch": 1.0102320208901023
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 0.9993753903810119,
+              "traffic_proxy_above_report_threshold_pct": 0.0047363013744451034,
+              "physical_overload_traffic_pct": 0.0002594506176075736,
+              "mean_peak_utilization": 0.373846289498742,
+              "p95_peak_utilization": 0.6116688251495361,
+              "route_changes_per_step": 0.0024984384759525295,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.499063085571518,
+              "mean_igp_cost_stretch": 1.0102187090021502
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 3,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.004746996290112981,
+              1.3116801998750782,
+              0.011242973141786383,
+              0.37721762244940404,
+              1.010122116363843
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.061836352279825,
+              "traffic_proxy_above_report_threshold_pct": 0.0038618683559194134,
+              "physical_overload_traffic_pct": 0.00026015995848670297,
+              "mean_peak_utilization": 0.3700447102437386,
+              "p95_peak_utilization": 0.6210913062095642,
+              "route_changes_per_step": 0.011242973141786383,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 5.598376014990631,
+              "mean_igp_cost_stretch": 1.010033891774532
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005632124224306549,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.38439053465506945,
+              "p95_peak_utilization": 0.6330379247665405,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1317926296064957,
+              "mean_igp_cost_stretch": 1.0102103409531542
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 10,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.004746996290112981,
+              1.3116801998750782,
+              0.011242973141786383,
+              0.37721762244940404,
+              1.010122116363843
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.061836352279825,
+              "traffic_proxy_above_report_threshold_pct": 0.0038618683559194134,
+              "physical_overload_traffic_pct": 0.00026015995848670297,
+              "mean_peak_utilization": 0.3700447102437386,
+              "p95_peak_utilization": 0.6210913062095642,
+              "route_changes_per_step": 0.011242973141786383,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 5.598376014990631,
+              "mean_igp_cost_stretch": 1.010033891774532
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005632124224306549,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.38439053465506945,
+              "p95_peak_utilization": 0.6330379247665405,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1317926296064957,
+              "mean_igp_cost_stretch": 1.0102103409531542
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.004746996290112981,
+              1.3116801998750782,
+              0.011242973141786383,
+              0.37721762244940404,
+              1.010122116363843
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.061836352279825,
+              "traffic_proxy_above_report_threshold_pct": 0.0038618683559194134,
+              "physical_overload_traffic_pct": 0.00026015995848670297,
+              "mean_peak_utilization": 0.3700447102437386,
+              "p95_peak_utilization": 0.6210913062095642,
+              "route_changes_per_step": 0.011242973141786383,
+              "max_route_changes_in_step": 3,
+              "alternate_flows_per_step": 5.598376014990631,
+              "mean_igp_cost_stretch": 1.010033891774532
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005632124224306549,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.38439053465506945,
+              "p95_peak_utilization": 0.6330379247665405,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1317926296064957,
+              "mean_igp_cost_stretch": 1.0102103409531542
+            }
+          },
+          {
+            "policy": "persistent_minmax",
+            "trigger": 0.7,
+            "penalty": 0.0,
+            "max_moves": 1,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.004747049268264571,
+              1.2804497189256714,
+              0.005621486570893191,
+              0.375949366908197,
+              1.0101196635987297
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 0.9993753903810119,
+              "traffic_proxy_above_report_threshold_pct": 0.0038619743122225935,
+              "physical_overload_traffic_pct": 0.00029121572704407517,
+              "mean_peak_utilization": 0.36750819916132466,
+              "p95_peak_utilization": 0.606412410736084,
+              "route_changes_per_step": 0.005621486570893191,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 4.0056214865708935,
+              "mean_igp_cost_stretch": 1.0100289862443053
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005632124224306549,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.38439053465506945,
+              "p95_peak_utilization": 0.6330379247665405,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1317926296064957,
+              "mean_igp_cost_stretch": 1.0102103409531542
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.03,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.005369192983086647,
+              1.5615240474703311,
+              0.003123048094940662,
+              0.3826676561246434,
+              1.01021192177737
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005106261741866746,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.3809447775942173,
+              "p95_peak_utilization": 0.6322542428970337,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.581511555277951,
+              "mean_igp_cost_stretch": 1.0102135026015857
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.005632124224306549,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.38439053465506945,
+              "p95_peak_utilization": 0.6330379247665405,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.1317926296064957,
+              "mean_igp_cost_stretch": 1.0102103409531542
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.003,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.008288665545054794,
+              2.5296689569019364,
+              0.003123048094940662,
+              0.4648460119981307,
+              1.0006702464208872
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.499063085571518,
+              "traffic_proxy_above_report_threshold_pct": 0.0033572578365529287,
+              "physical_overload_traffic_pct": 0.00028269118783549917,
+              "mean_peak_utilization": 0.46095184857103694,
+              "p95_peak_utilization": 0.6357095837593079,
+              "route_changes_per_step": 0.003123048094940662,
+              "max_route_changes_in_step": 2,
+              "alternate_flows_per_step": 2.129294191130543,
+              "mean_igp_cost_stretch": 1.0006908435140467
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 3.560274828232355,
+              "traffic_proxy_above_report_threshold_pct": 0.013220073253556657,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4687401754252245,
+              "p95_peak_utilization": 0.6839160323143005,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.4965646470955654,
+              "mean_igp_cost_stretch": 1.0006496493277277
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.45,
+            "penalty": 0.1,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.014243411462688059,
+              2.748282323547783,
+              0.0024984384759525295,
+              0.39904935807827335,
+              1.0079136671423519
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.5615240474703311,
+              "traffic_proxy_above_report_threshold_pct": 0.007422342905368968,
+              "physical_overload_traffic_pct": 0.0004623040759343791,
+              "mean_peak_utilization": 0.37368876178476085,
+              "p95_peak_utilization": 0.6203803420066833,
+              "route_changes_per_step": 0.0024984384759525295,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.401623985009369,
+              "mean_igp_cost_stretch": 1.0100145838052013
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 3.9350405996252342,
+              "traffic_proxy_above_report_threshold_pct": 0.02106448002000715,
+              "physical_overload_traffic_pct": 0.00045229797178808414,
+              "mean_peak_utilization": 0.4244099543717859,
+              "p95_peak_utilization": 0.6868409514427185,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.4397251717676451,
+              "mean_igp_cost_stretch": 1.0058127504795025
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.01,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.015109290016164201,
+              3.372891942535915,
+              0.0018738288569643974,
+              0.4684846302556068,
+              1.0006510159434328
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 1.8738288569643973,
+              "traffic_proxy_above_report_threshold_pct": 0.004041333162374629,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.46172757785555574,
+              "p95_peak_utilization": 0.6385753750801086,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 2.104309806371018,
+              "mean_igp_cost_stretch": 1.0006881688432967
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 4.871955028107433,
+              "traffic_proxy_above_report_threshold_pct": 0.026177246869953773,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.4752416826556579,
+              "p95_peak_utilization": 0.6993139982223511,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.4384759525296689,
+              "mean_igp_cost_stretch": 1.0006138630435688
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.03,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.03892279753786258,
+              6.214865708931917,
+              0.0018738288569643974,
+              0.4791369291765849,
+              1.0005928336051102
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 4.871955028107433,
+              "traffic_proxy_above_report_threshold_pct": 0.02617813824702118,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.475313265302418,
+              "p95_peak_utilization": 0.6993169784545898,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.712679575265459,
+              "mean_igp_cost_stretch": 1.000614012649402
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 7.557776389756403,
+              "traffic_proxy_above_report_threshold_pct": 0.05166745682870398,
+              "physical_overload_traffic_pct": 0.00022261589358349578,
+              "mean_peak_utilization": 0.48296059305075184,
+              "p95_peak_utilization": 0.7343605160713196,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.3685196752029982,
+              "mean_igp_cost_stretch": 1.0005716545608183
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.55,
+            "penalty": 0.1,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.04649364460325446,
+              6.589631480324797,
+              0.0018738288569643974,
+              0.43861447337975284,
+              1.005950475433132
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 5.1217988757026855,
+              "traffic_proxy_above_report_threshold_pct": 0.03278692276488812,
+              "physical_overload_traffic_pct": 0.0002042816220075916,
+              "mean_peak_utilization": 0.43188487654138846,
+              "p95_peak_utilization": 0.7021772265434265,
+              "route_changes_per_step": 0.0018738288569643974,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.7339163023110555,
+              "mean_igp_cost_stretch": 1.0060879671953122
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 8.057464084946908,
+              "traffic_proxy_above_report_threshold_pct": 0.060200366441620794,
+              "physical_overload_traffic_pct": 0.00019991250626095976,
+              "mean_peak_utilization": 0.4453440702181172,
+              "p95_peak_utilization": 0.7371160984039307,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 1.3685196752029982,
+              "mean_igp_cost_stretch": 1.005812983670952
+            }
+          },
+          {
+            "policy": "persistent_overflow",
+            "trigger": 0.7,
+            "penalty": 0.1,
+            "max_moves": 100,
+            "budget_met_for_both_inputs": true,
+            "selection_score": [
+              0.13115644907078028,
+              20.45596502186134,
+              0.0012492192379762648,
+              0.5370582608060491,
+              1.0000856586065172
+            ],
+            "reactive_metrics": {
+              "steps_above_report_threshold_pct": 18.176139912554653,
+              "traffic_proxy_above_report_threshold_pct": 0.10717688617782167,
+              "physical_overload_traffic_pct": 0.0028909983057854496,
+              "mean_peak_utilization": 0.5267255896612825,
+              "p95_peak_utilization": 0.82306307554245,
+              "route_changes_per_step": 0.0012492192379762648,
+              "max_route_changes_in_step": 1,
+              "alternate_flows_per_step": 0.5696439725171768,
+              "mean_igp_cost_stretch": 1.0001713172130342
+            },
+            "proactive_metrics": {
+              "steps_above_report_threshold_pct": 22.73579013116802,
+              "traffic_proxy_above_report_threshold_pct": 0.15513601196373888,
+              "physical_overload_traffic_pct": 0.0029180058814991827,
+              "mean_peak_utilization": 0.5473909319508158,
+              "p95_peak_utilization": 0.8332667350769043,
+              "route_changes_per_step": 0.0,
+              "max_route_changes_in_step": 0,
+              "alternate_flows_per_step": 0.0,
+              "mean_igp_cost_stretch": 1.0
+            }
+          }
+        ],
+        "reactive_independent_baseline": {
+          "trigger": 0.55,
+          "max_moves_per_optimizer_call": 100,
+          "average_route_change_budget_met": true,
+          "validation_metrics": {
+            "steps_above_report_threshold_pct": 0.18738288569643974,
+            "traffic_proxy_above_report_threshold_pct": 0.0005462646275249162,
+            "physical_overload_traffic_pct": 0.0002595509921923643,
+            "mean_peak_utilization": 0.32776000317672427,
+            "p95_peak_utilization": 0.556389331817627,
+            "route_changes_per_step": 0.02560899437851343,
+            "max_route_changes_in_step": 3,
+            "alternate_flows_per_step": 13.916926920674578,
+            "mean_igp_cost_stretch": 1.0109062701509188
+          }
+        }
+      },
+      "test": {
+        "reactive_independent_baseline": {
+          "steps_above_report_threshold_pct": 0.06246096189881324,
+          "traffic_proxy_above_report_threshold_pct": 2.1888185577521765e-05,
+          "physical_overload_traffic_pct": 0.0,
+          "mean_peak_utilization": 0.397942301353613,
+          "p95_peak_utilization": 0.5281350612640381,
+          "route_changes_per_step": 0.008119925046845722,
+          "max_route_changes_in_step": 3,
+          "alternate_flows_per_step": 3.5440349781386633,
+          "mean_igp_cost_stretch": 1.0033700422238652,
+          "validation_selected_trigger": 0.55,
+          "average_route_change_budget_met": true
+        },
+        "proactive_independent": {
+          "steps_above_report_threshold_pct": 0.0,
+          "traffic_proxy_above_report_threshold_pct": 0.0,
+          "physical_overload_traffic_pct": 0.0,
+          "mean_peak_utilization": 0.37315808089541913,
+          "p95_peak_utilization": 0.5060203075408936,
+          "route_changes_per_step": 0.004372267332916927,
+          "max_route_changes_in_step": 1,
+          "alternate_flows_per_step": 4.032479700187383,
+          "mean_igp_cost_stretch": 1.0045452395236647,
+          "validation_selected_trigger": 0.55,
+          "average_route_change_budget_met": true
+        },
+        "reactive_tuned_policy": {
+          "steps_above_report_threshold_pct": 0.06246096189881324,
+          "traffic_proxy_above_report_threshold_pct": 2.1888185577521765e-05,
+          "physical_overload_traffic_pct": 0.0,
+          "mean_peak_utilization": 0.397942301353613,
+          "p95_peak_utilization": 0.5281350612640381,
+          "route_changes_per_step": 0.008119925046845722,
+          "max_route_changes_in_step": 3,
+          "alternate_flows_per_step": 3.5440349781386633,
+          "mean_igp_cost_stretch": 1.0033700422238652,
+          "validation_selected_trigger": 0.55,
+          "average_route_change_budget_met": true
+        },
+        "proactive_tuned_policy": {
+          "steps_above_report_threshold_pct": 0.0,
+          "traffic_proxy_above_report_threshold_pct": 0.0,
+          "physical_overload_traffic_pct": 0.0,
+          "mean_peak_utilization": 0.37315808089541913,
+          "p95_peak_utilization": 0.5060203075408936,
+          "route_changes_per_step": 0.004372267332916927,
+          "max_route_changes_in_step": 1,
+          "alternate_flows_per_step": 4.032479700187383,
+          "mean_igp_cost_stretch": 1.0045452395236647,
+          "validation_selected_trigger": 0.55,
+          "average_route_change_budget_met": true
+        }
+      },
+      "paired_test_differences": {
+        "reactive_tuned_policy_minus_reactive_independent_baseline": {
+          "steps_above_report_threshold_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "traffic_proxy_above_report_threshold_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "physical_overload_traffic_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "mean_peak_utilization": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "route_changes_per_step": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "mean_igp_cost_stretch": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          }
+        },
+        "proactive_tuned_policy_minus_reactive_tuned_policy": {
+          "steps_above_report_threshold_pp": {
+            "mean": -0.06246096189881324,
+            "ci95_low": -0.18738288569643974,
+            "ci95_high": 0.0
+          },
+          "traffic_proxy_above_report_threshold_pp": {
+            "mean": -2.1888185577521765e-05,
+            "ci95_low": -6.56645567325653e-05,
+            "ci95_high": 0.0
+          },
+          "physical_overload_traffic_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "mean_peak_utilization": {
+            "mean": -0.024784220458193916,
+            "ci95_low": -0.04687254911824959,
+            "ci95_high": -0.01242459253602889
+          },
+          "route_changes_per_step": {
+            "mean": -0.0037476577139287947,
+            "ci95_low": -0.010618363522798251,
+            "ci95_high": 0.0018738288569643974
+          },
+          "mean_igp_cost_stretch": {
+            "mean": 0.001175197299799726,
+            "ci95_low": 0.00013139594504922846,
+            "ci95_high": 0.0028057797152496104
+          }
+        },
+        "proactive_tuned_policy_minus_reactive_independent_baseline": {
+          "steps_above_report_threshold_pp": {
+            "mean": -0.06246096189881324,
+            "ci95_low": -0.18738288569643974,
+            "ci95_high": 0.0
+          },
+          "traffic_proxy_above_report_threshold_pp": {
+            "mean": -2.1888185577521765e-05,
+            "ci95_low": -6.56645567325653e-05,
+            "ci95_high": 0.0
+          },
+          "physical_overload_traffic_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "mean_peak_utilization": {
+            "mean": -0.024784220458193916,
+            "ci95_low": -0.04617740705697742,
+            "ci95_high": -0.011158553469253665
+          },
+          "route_changes_per_step": {
+            "mean": -0.0037476577139287947,
+            "ci95_low": -0.010618363522798251,
+            "ci95_high": 0.0018738288569643974
+          },
+          "mean_igp_cost_stretch": {
+            "mean": 0.001175197299799726,
+            "ci95_low": 0.00013620545702971033,
+            "ci95_high": 0.0028203838176183564
+          }
+        },
+        "proactive_independent_minus_reactive_independent_baseline": {
+          "steps_above_report_threshold_pp": {
+            "mean": -0.06246096189881324,
+            "ci95_low": -0.18738288569643974,
+            "ci95_high": 0.0
+          },
+          "traffic_proxy_above_report_threshold_pp": {
+            "mean": -2.1888185577521765e-05,
+            "ci95_low": -6.56645567325653e-05,
+            "ci95_high": 0.0
+          },
+          "physical_overload_traffic_pp": {
+            "mean": 0.0,
+            "ci95_low": 0.0,
+            "ci95_high": 0.0
+          },
+          "mean_peak_utilization": {
+            "mean": -0.024784220458193916,
+            "ci95_low": -0.04702532792918798,
+            "ci95_high": -0.010861279821019865
+          },
+          "route_changes_per_step": {
+            "mean": -0.0037476577139287947,
+            "ci95_low": -0.010633978763272954,
+            "ci95_high": 0.0018738288569643974
+          },
+          "mean_igp_cost_stretch": {
+            "mean": 0.001175197299799726,
+            "ci95_low": 0.00014398165358700646,
+            "ci95_high": 0.0028515419766285653
+          }
+        }
+      }
+    }
+  }
+}

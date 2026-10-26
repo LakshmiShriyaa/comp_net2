@@ -93,6 +93,38 @@ The capacity-aware multi-commodity-flow (MCF) LP uses the same 55% trigger but p
 
 These advanced-policy metrics are point estimates without bootstrap intervals. The reduced-capacity case is synthetic and test results remain exploratory.
 
+### Earlier average-budget persistent routing experiment
+
+The independent overflow router rebuilds routes from shortest paths at every interval. The new persistent variant starts from its previous route assignment and moves flows only when doing so lowers squared utilization excess above the action trigger. `routing_policy_fair_eval.py` selects one trigger and penalty jointly for reactive and forecast inputs on validation, subject to an average budget of 3 actual whole-flow route changes per step. Both inputs then use the same capacity mapping, five paths, trigger, penalty, and routing policy on test. This is an average budget; it is not a hard per-interval limit.
+
+At archived capacities, validation selected the persistent overflow policy with a 55% trigger and zero additional penalty. On the inspected test period, persistent reactive routing reduced steps above 70% from 0.437% to 0.000%, the above-70% traffic proxy from 0.001363% to zero, mean peak utilization from 0.453 to 0.402 (11.3% lower), and actual route changes from 0.335 to 0.0069 per step (98% fewer). The paired 95% moving-block intervals for these differences excluded zero. No physical overload occurred under either policy. The trade-off was more flows remaining on alternate paths (6.64 vs. 0.44 per step) and a 0.10% increase in mean IGP-cost stretch (1.0002 to 1.0012). These are utilization and control-cost results, not packet-loss or QoS measurements.
+
+| Capacity scale | Reactive independent steps >70% | Persistent reactive steps >70% | Reactive independent >capacity proxy | Persistent reactive >capacity proxy | Mean peak: independent → persistent | Route changes/step: independent → persistent | IGP stretch: independent → persistent |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 100% archived | 0.437% | 0.000% | 0.0000% | 0.0000% | 0.453 → 0.402 | 0.335 → 0.007 | 1.0002 → 1.0012 |
+| 50% synthetic | 34.354% | 29.044% | 0.0102% | 0.0007% | 0.653 → 0.611 | 2.488 → 0.058 | 1.0090 → 1.0232 |
+| 35% synthetic | 74.391% | 65.209% | 0.2618% | 0.0289% | 0.925 → 0.863 | 1.026 → 0.138 | 1.0091 → 1.0259 |
+
+The 50% and 35% rows are synthetic capacity stress tests, not observed GÉANT capacity conditions. Their paired bootstrap intervals and full metrics are in `res_STACK_GEANT_CAP/policy_fair_results_stress.json` and `.md`.
+
+With the persistent optimizer held fixed at the same 55% trigger, replacing reactive input with the full forecast did not establish an additional benefit on the archived-capacity test: both policies had zero steps above 70%; the mean-peak difference was -0.0187 with 95% interval [-0.0432, +0.0033], while IGP stretch increased by 0.00293. Validation-tuned blends selected weights 0.50 at archived capacity, 0.25 at 50%, and 0.10 at 35%; they did not produce a consistent test improvement over reactive input. Full results are in `res_STACK_GEANT_CAP/forecast_blend_results.json` and `.md`.
+
+This average-budget experiment suggested a routing improvement, but did not constrain the maximum route changes in an individual interval. The stricter hard-cap comparison below supersedes it for the main claim. The test period was examined during development, so all test comparisons remain exploratory; a fresh chronological holdout is still required for confirmatory claims.
+
+### Matched hard-cap routing comparison
+
+To enforce the same operational limit at every interval, all candidate controllers were capped at **three final whole-flow route changes per step**. For the independent overflow baseline, the optimizer proposes a route assignment and the evaluator commits at most three beneficial changes relative to the previous assignment. Persistent policies use the same three-change cap directly. Trigger and policy choices are made using validation only; at archived capacity, the shared selected trigger was 55%. Test comparisons use paired 96-step moving-block bootstrap intervals (1,000 replicates) and remain exploratory because the test period has been inspected during development.
+
+At archived capacities, the validation-selected controller was independent overflow for both input types. Supplying the one-hour traffic forecast instead of the lagged reactive observation reduced mean peak link utilization from **0.398 to 0.373** (absolute change -0.0248; paired 95% interval [-0.0469, -0.0124]), about a **6.2% relative reduction**. Test intervals with any link above 70% went from **0.062% to 0.000%** (one interval to none), but that event-count interval includes zero. The above-70% traffic proxy also fell by a tiny amount; true capacity overload remained zero for both. Average route changes were 0.0081 vs. 0.0044 per step, and the maximum was at most three for every step. Mean IGP path-cost stretch increased slightly from 1.0034 to 1.0045 (paired difference +0.00118; 95% interval [+0.00013, +0.00281]). Thus the concrete win is lower peak utilization under the matched hard cap, not demonstrated congestion or packet-loss removal.
+
+| Capacity scenario | Validation-selected policy and trigger | Reactive baseline steps >70% | Selected reactive policy steps >70% | Reactive baseline >capacity proxy | Selected reactive policy >capacity proxy | Mean peak utilization, baseline → selected | IGP stretch, baseline → selected |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Archived capacity | Independent overflow, 55% | 0.062% | 0.062% | 0.0000% | 0.0000% | 0.398 → 0.398 | 1.0034 → 1.0034 |
+| 50% synthetic | Persistent overflow, 55% | 29.794% | 29.044% | 0.00076% | 0.00073% | 0.613 → 0.611 | 1.0163 → 1.0232 |
+| 35% synthetic | Persistent overflow, 45% | 65.459% | 65.209% | 0.02868% | 0.02915% | 0.864 → 0.863 | 1.0270 → 1.0253 |
+
+On the two synthetic stress scales, persistence gave mixed and small changes; at 35% the above-capacity proxy increased slightly. The forecast itself was not consistently helpful under stress. These artificial capacity reductions are sensitivity tests and are not measured GÉANT operating conditions. Full tables and bootstrap intervals are in `res_STACK_GEANT_CAP/policy_hardcap_results_real.md`, `policy_hardcap_results_50pct.md`, and `policy_hardcap_results_35pct.md`.
+
 ### Separate route-stability experiment
 
 This policy carries each flow's previous path forward and changes it only when predicted peak-utilization gain clears a hysteresis margin. Margins were selected on validation separately for reactive and proactive input using the selected 5-path overflow model and 45% proactive trigger. Selection minimized route changes while limiting added high-utilization intervals to 0.125 percentage points, added above-trigger proxy to 0.002 percentage points, and mean IGP-cost stretch to 1.02. Selected margins were 0.40 for reactive input and 0.01 for proactive input.
@@ -133,6 +165,11 @@ Sources: [TOTEM traffic-matrix and topology archive](https://totem.run.montefior
 - `res_STACK_GEANT_CAP/capacity_stress_comparison.md` — sensitivity results for 50% and 35% capacity assumptions.
 - `res_STACK_GEANT_CAP/advanced_routing/advanced_routing_results.json` — validation sweeps and advanced test comparisons.
 - `res_STACK_GEANT_CAP/advanced_routing/advanced_routing_summary.md` — compact advanced-policy tables.
+- `res_STACK_GEANT_CAP/policy_fair_results_real.json` and `.md` — validation-selected persistent-router comparison at archived capacities with paired bootstrap intervals.
+- `res_STACK_GEANT_CAP/policy_fair_results_stress.json` and `.md` — the same comparison at synthetic 50% and 35% capacity scales.
+- `res_STACK_GEANT_CAP/forecast_blend_results.json` and `.md` — validation-tuned forecast-weight sweep under persistent routing.
+- `res_STACK_GEANT_CAP/policy_hardcap_results_real.json` and `.md` — main validation-selected comparison with a hard cap of three actual route changes per interval.
+- `res_STACK_GEANT_CAP/policy_hardcap_results_50pct.json` and `.md`, and `policy_hardcap_results_35pct.json` and `.md` — synthetic stress sensitivity under the same hard cap.
 - `presentation_capacity/forecast_errors.png` — absolute forecast errors.
 - `presentation_capacity/normalized_rmse.png` — per-OD normalized RMSE comparison.
 - `presentation_capacity/forecast_example.png` — actual, predicted, and last-observed aggregate traffic over the first test day.
@@ -156,7 +193,15 @@ py routing.py --results res_STACK_GEANT_CAP --nodes 23 --topo geant --edges gean
 py routing_stability_sweep.py
 py make_presentation_figures.py --results res_STACK_GEANT_CAP --out presentation_capacity
 py routing_report.py
+py routing_policy_fair_eval.py --scales 1.0 --out res_STACK_GEANT_CAP/policy_fair_results_real.json
+py routing_policy_fair_eval.py --scales 0.50 0.35 --out res_STACK_GEANT_CAP/policy_fair_results_stress.json
+py routing_forecast_blend_sweep.py
+py routing_policy_fair_eval.py --scales 1.0 --boot 1000 --out res_STACK_GEANT_CAP/policy_hardcap_results_real.json
+py routing_policy_fair_eval.py --scales 0.50 --triggers 0.55 --boot 1000 --out res_STACK_GEANT_CAP/policy_hardcap_results_50pct.json
+py routing_policy_fair_eval.py --scales 0.35 --triggers 0.45 --boot 1000 --out res_STACK_GEANT_CAP/policy_hardcap_results_35pct.json
 ```
+
+`routing.py` also exposes persistent overflow and peak-minimizing objectives for direct runs; `--max-route-changes 3` enforces a hard cap. `routing_policy_fair_eval.py` applies the same hard cap to the independent baseline and persistent candidates, selects policies on validation data, then writes paired test intervals.
 
 For new CNN-LSTM runs, `train.py` now saves validation forecasts, test-time last observations, and input histories so blending and routing comparisons can be repeated without reconstructing them from test labels. `linear_forecast.py` performs its model selection on validation data only.
 
