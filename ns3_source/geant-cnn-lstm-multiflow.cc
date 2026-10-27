@@ -81,6 +81,7 @@ std::vector<uint32_t> FindPath(
     uint32_t destination,
     const std::vector<Edge>& edges,
     const std::vector<std::vector<double>>& forecast,
+    const std::vector<double>& forecastLoad,
     bool proactive) {
 
     const double INF = std::numeric_limits<double>::infinity();
@@ -112,7 +113,8 @@ std::vector<uint32_t> FindPath(
             break;
         }
 
-        for (const auto& edge : edges) {
+        for (size_t ei = 0; ei < edges.size(); ++ei) {
+            const auto& edge = edges[ei];
             uint32_t v;
 
             if (edge.u == u) {
@@ -131,10 +133,7 @@ std::vector<uint32_t> FindPath(
 
             if (proactive) {
                 double capacity = std::max(1.0, edge.capacityKbps);
-                double demand =
-                    (std::max(0.0, forecast[u][v]) +
-                     std::max(0.0, forecast[v][u])) / 2.0;
-
+                double demand = std::max(0.0, forecastLoad[ei]);
                 double utilization = demand / capacity;
                 weight += 100.0 * utilization * utilization;
             }
@@ -288,6 +287,51 @@ int main(int argc, char* argv[]) {
 
     std::cout << "Loaded " << edges.size() << " links\n";
 
+    // Estimate physical-link load by routing every forecast OD demand
+    // over a baseline shortest-hop path through the actual topology.
+    // Forecast entries are OD demands, not direct physical-link loads.
+    std::vector<double> forecastLoad(edges.size(), 0.0);
+    for (uint32_t src = 0; src < 23; ++src) {
+        for (uint32_t dst = 0; dst < 23; ++dst) {
+            if (src == dst) continue;
+            std::vector<int> prev(23, -1);
+            std::queue<uint32_t> q;
+            prev[src] = static_cast<int>(src);
+            q.push(src);
+            while (!q.empty() && prev[dst] == -1) {
+                uint32_t a = q.front();
+                q.pop();
+                for (const auto& e : edges) {
+                    uint32_t b;
+                    if (e.u == a) b = e.v;
+                    else if (e.v == a) b = e.u;
+                    else continue;
+                    if (prev[b] == -1) {
+                        prev[b] = static_cast<int>(a);
+                        q.push(b);
+                    }
+                }
+            }
+            if (prev[dst] == -1) continue;
+            double demand = std::max(0.0, forecast[src][dst]);
+            uint32_t node = dst;
+            while (node != src) {
+                uint32_t parent = static_cast<uint32_t>(prev[node]);
+                for (size_t ei = 0; ei < edges.size(); ++ei) {
+                    const auto& e = edges[ei];
+                    if ((e.u == parent && e.v == node) ||
+                        (e.v == parent && e.u == node)) {
+                        forecastLoad[ei] += demand;
+                        break;
+                    }
+                }
+                node = parent;
+            }
+        }
+    }
+
+    std::cout << "Forecast-based physical-link loads estimated from OD paths.\n";
+
     // Four identical flow definitions are used in both modes.
     std::vector<TrafficFlow> flows = {
         {0, 22, 9000},
@@ -300,7 +344,7 @@ int main(int argc, char* argv[]) {
 
     for (const auto& flow : flows) {
         auto path = FindPath(
-            flow.src, flow.dst, edges, forecast,
+            flow.src, flow.dst, edges, forecast, forecastLoad,
             mode == "proactive");
 
         if (path.size() < 2) {
