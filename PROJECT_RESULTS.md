@@ -125,6 +125,20 @@ At archived capacities, the validation-selected controller was independent overf
 
 On the two synthetic stress scales, persistence gave mixed and small changes; at 35% the above-capacity proxy increased slightly. The forecast itself was not consistently helpful under stress. These artificial capacity reductions are sensitivity tests and are not measured GÉANT operating conditions. Full tables and bootstrap intervals are in `res_STACK_GEANT_CAP/policy_hardcap_results_real.md`, `policy_hardcap_results_50pct.md`, and `policy_hardcap_results_35pct.md`.
 
+### Matched persistence: forecast versus reactive
+
+The follow-up evaluator `fair_routing_eval.py --persistence` replays both inputs with and without persistence at the same three triggers, selects each hysteresis on validation using one shared rule, and computes paired 96-step moving-block intervals on test. Validation selected a 55% trigger for both schemes; it selected hysteresis 0.30 for reactive and 0.10 for proactive at that trigger. The stack's validation predictions are in-sample, so this selection may favor proactive routing. The test set was also inspected during development.
+
+At the selected 55% trigger, persistent reactive and persistent proactive both had **0.000%** of intervals above 70% and zero above-70% traffic proxy. The proactive-minus-reactive mean-peak difference was -0.0187 utilization (95% interval [-0.0426, +0.0039]), which includes zero. Actual route changes differed by -0.0031 per interval ([-0.0081, +0.0006]), also inconclusive. Proactive used 3.36 fewer flows off their default path on average, but its mean IGP stretch was higher by 0.00293 (95% interval [+0.00076, +0.00509]). Thus the earlier 6.2% mean-peak reduction describes forecast versus reactive input under independent routing; it does **not** establish a forecast benefit after both inputs receive validation-selected persistence.
+
+| Same trigger | Reactive h | Proactive h | Δ steps >70% (pp) [95% CI] | Δ mean peak [95% CI] | Δ route changes/step [95% CI] | Δ flows off default/step [95% CI] | Δ IGP stretch [95% CI] |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 45% | 0.30 | 0.10 | 0.000 [0.000, 0.000] | +0.0007 [-0.0001, +0.0019] | -0.0031 [-0.0087, +0.0006] | -0.863 [-0.998, -0.687] | -0.00024 [-0.00029, -0.00019] |
+| **55% (validation-selected)** | **0.30** | **0.10** | **0.000 [0.000, 0.000]** | **-0.0187 [-0.0426, +0.0039]** | **-0.0031 [-0.0081, +0.0006]** | **-3.361 [-4.515, -2.062]** | **+0.00293 [+0.00076, +0.00509]** |
+| 70% | 0.50 | 0.10 | 0.000 [0.000, 0.000] | +0.0070 [+0.0042, +0.0107] | +0.0012 [0.0000, +0.0037] | +1.913 [+1.848, +2.002] | +0.00004 [+0.00003, +0.00005] |
+
+At 70%, persistent proactive had significantly higher mean peak utilization than persistent reactive. Across matched triggers, the clearest consistent effect is persistence versus each scheme's independent routing: it reduced actual route changes, and at 55% it reduced above-70% intervals for both reactive and proactive inputs. This is exploratory evidence from the inspected period, not a confirmatory forecast advantage. Full validation selections, all six paired metrics, and intervals are in `res_STACK_GEANT_CAP/persistence_eval/fair_routing_comparison.json`.
+
 ### Separate route-stability experiment
 
 This policy carries each flow's previous path forward and changes it only when predicted peak-utilization gain clears a hysteresis margin. Margins were selected on validation separately for reactive and proactive input using the selected 5-path overflow model and 45% proactive trigger. Selection minimized route changes while limiting added high-utilization intervals to 0.125 percentage points, added above-trigger proxy to 0.002 percentage points, and mean IGP-cost stretch to 1.02. Selected margins were 0.40 for reactive input and 0.01 for proactive input.
@@ -170,6 +184,7 @@ Sources: [TOTEM traffic-matrix and topology archive](https://totem.run.montefior
 - `res_STACK_GEANT_CAP/forecast_blend_results.json` and `.md` — validation-tuned forecast-weight sweep under persistent routing.
 - `res_STACK_GEANT_CAP/policy_hardcap_results_real.json` and `.md` — main validation-selected comparison with a hard cap of three actual route changes per interval.
 - `res_STACK_GEANT_CAP/policy_hardcap_results_50pct.json` and `.md`, and `policy_hardcap_results_35pct.json` and `.md` — synthetic stress sensitivity under the same hard cap.
+- `res_STACK_GEANT_CAP/persistence_eval/fair_routing_comparison.json` — matched-trigger persistence selection and paired reactive/proactive comparison.
 - `presentation_capacity/forecast_errors.png` — absolute forecast errors.
 - `presentation_capacity/normalized_rmse.png` — per-OD normalized RMSE comparison.
 - `presentation_capacity/forecast_example.png` — actual, predicted, and last-observed aggregate traffic over the first test day.

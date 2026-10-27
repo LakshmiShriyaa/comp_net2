@@ -8,7 +8,7 @@ The validation-CV-selected per-OD stack forecasts one hour ahead. On the examine
 
 For routing, an archived 2004 GÉANT topology supplies assumed per-link capacities and IGP weights, uniquely matched to the anonymized graph. With 5 candidate paths, the overflow objective, and a common 45% trigger, proactive routing did not improve the 45%-threshold exceedance rate over reactive routing (28.17% vs. 27.23%). The forecast did lower link-load RMSE from 1.305% to 1.020% of capacity. No link exceeded full capacity in the observed test data under these assumptions. This test set was examined during iterative development; results are exploratory and do not establish a QoS gain. See [PROJECT_RESULTS.md](PROJECT_RESULTS.md) for provenance and caveats.
 
-In a stricter replay with the same validation-selected 55% trigger and a hard limit of three route changes per 15-minute interval, the forecast-driven router reduced mean peak utilization from 0.398 to 0.373 (about 6.2%); the paired 95% moving-block interval for the reduction was 1.24 to 4.69 percentage points of link capacity. One interval above 70% became zero, but that event-count result was uncertain and neither controller overloaded a link. The improvement was not consistent in synthetic capacity stress tests. See `res_STACK_GEANT_CAP/policy_hardcap_results_real.md` and the full caveats in [PROJECT_RESULTS.md](PROJECT_RESULTS.md).
+In the non-persistent, capped comparison, the forecast-driven router reduced mean peak utilization from 0.398 to 0.373 at the validation-selected 55% trigger. A follow-up matched-persistence evaluation selected hysteresis 0.30 for reactive and 0.10 for proactive at that trigger. Both persistent schemes had zero intervals above 70%; the paired mean-peak difference was -0.0187 with 95% interval [-0.0426, +0.0039], which includes zero. At 70%, the persistent forecast scheme had higher mean peak utilization. The clearest result is that persistence reduces route churn for both schemes; a forecast benefit beyond persistence is not established. See `res_STACK_GEANT_CAP/persistence_eval/fair_routing_comparison.json` and the caveats in [PROJECT_RESULTS.md](PROJECT_RESULTS.md).
 
 A separate route-stability experiment used validation-selected thresholds (70% reactive, 45% proactive); within its proactive comparison, persistence reduced route changes by 99.5% and intervals above 70% utilization to zero. It reroutes more flows (7.28 per interval) and adds 0.88% mean IGP path cost. This is a separate policy result, not a matched-threshold comparison; see the report.
 
@@ -55,6 +55,14 @@ py fair_routing_eval.py --results res_STACK_GEANT_CAP --val-results res_STACK_BE
 ```
 
 This writes `res_STACK_GEANT_CAP/fair_routing_comparison.json` and prints the same-trigger grid plus paired 95% moving-block bootstrap intervals. Trigger selection uses validation forecasts, which can be optimistic if those forecasts were tuned on the same validation targets. The test set has also been inspected during development, so treat test comparisons as exploratory.
+
+To compare persistent reactive and persistent proactive routes at each matched trigger, with hysteresis chosen per scheme and trigger on validation, run:
+
+```powershell
+py fair_routing_eval.py --results res_STACK_GEANT_CAP --val-results res_STACK_BEST --nodes 23 --edges geant_edges.txt --link-metadata geant_link_capacities.csv --k 5 --optimizer overflow --triggers 0.45 0.55 0.70 --persistence --hysteresis 0.1 0.3 0.5 0.7 --out res_STACK_GEANT_CAP/persistence_eval
+```
+
+This writes `persistence_eval/fair_routing_comparison.json`; sections C and D in the console output compare persistence against independent routing and persistent proactive against persistent reactive. The test split has been inspected and the stack's validation forecasts are in-sample, so treat these as exploratory results.
 
 For optional synthetic capacity stress sensitivity runs (not actual GÉANT capacity claims), use fixed scale factors and separate output folders:
 
