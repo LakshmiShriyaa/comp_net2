@@ -230,6 +230,11 @@
       }
     ],
     "link_metadata_file": "geant_link_capacities.csv",
+    "persistent_routes": false,
+    "reroute_penalty": 0.0,
+    "persistent_objective": "overflow",
+    "max_route_changes": null,
+    "max_moves_per_interval": 100,
     "link_metadata_provenance": "IGen geant-20041125.gml; unique graph-isomorphism match to the anonymized 23-node, 37-link topology; bandwidth converted to kbps",
     "capacity_calibration_file": null,
     "congestion_threshold": 0.45,
@@ -247,6 +252,7 @@
       "steps_above_trigger_%": 55.090568394753284,
       "over_trigger_traffic_proxy_%": 0.44666439294815063,
       "avg_flows_rerouted": 0.0,
+      "avg_route_changes_per_step": 0.0,
       "path_stretch": 1.0
     },
     "reactive (last matrix)": {
@@ -257,6 +263,7 @@
       "steps_above_trigger_%": 27.232979387882573,
       "over_trigger_traffic_proxy_%": 0.09132787585258484,
       "avg_flows_rerouted": 2.191755153029357,
+      "avg_route_changes_per_step": 1.3897564022485946,
       "path_stretch": 1.0021291971206665
     },
     "proactive (same 0.45 trigger for all)": {
@@ -267,6 +274,7 @@
       "steps_above_trigger_%": 28.169893816364773,
       "over_trigger_traffic_proxy_%": 0.09428022056818008,
       "avg_flows_rerouted": 2.211742660836977,
+      "avg_route_changes_per_step": 0.9412866958151156,
       "path_stretch": 1.002013921737671
     },
     "hybrid (max fcst, last)": {
@@ -277,6 +285,7 @@
       "steps_above_trigger_%": 20.362273579013117,
       "over_trigger_traffic_proxy_%": 0.05566365271806717,
       "avg_flows_rerouted": 2.76264834478451,
+      "avg_route_changes_per_step": 1.3716427232979387,
       "path_stretch": 1.0029395818710327
     },
     "oracle (true matrix)": {
@@ -287,6 +296,7 @@
       "steps_above_trigger_%": 10.680824484697064,
       "over_trigger_traffic_proxy_%": 0.01647903025150299,
       "avg_flows_rerouted": 2.1911305434103685,
+      "avg_route_changes_per_step": 1.3885071830106184,
       "path_stretch": 1.0021252632141113
     }
   },

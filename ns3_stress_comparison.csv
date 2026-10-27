@@ -1,0 +1,3 @@
+mode,nodes,links,flows,rate_per_flow_kbps,duration_s,tx_bytes,rx_bytes,tx_packets,rx_packets,lost_packets,aggregate_delay_s
+baseline,23,37,4,100000,5,202897136,202897136,192868,192868,0,3138.25
+proactive,23,37,4,100000,5,202897136,202897136,192868,192868,0,3138.42

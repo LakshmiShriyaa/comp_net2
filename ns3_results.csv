@@ -1,0 +1,3 @@
+mode,rate_kbps,tx_bytes,rx_bytes,tx_packets,rx_packets,lost_packets,aggregate_delay_s,path
+baseline,1000,1142472,1142472,1086,1086,0,16.2985,"0->11->17->22"
+proactive,1000,1142472,1142472,1086,1086,0,16.2985,"0->11->17->22"
