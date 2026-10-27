@@ -7,7 +7,7 @@ Why this exists
 
       1. every scheme is replayed at every controller trigger in the same grid
       2. each scheme's trigger is then CHOSEN ON VALIDATION by one shared rule:
-            lowest above-threshold traffic, subject to a reroute budget (flows moved per step)
+            lowest above-threshold traffic, subject to a budget on average flows assigned to non-default paths
       3. the chosen triggers are replayed on the test set
       4. differences (proactive minus reactive) come with 95% block-bootstrap intervals
 
@@ -134,7 +134,7 @@ def run_grid(pt, cap, split, triggers, optimize_fn, report_thr, schemes, hysts=(
 def summary(r):
     return {"steps_above_%": 100 * r["above"].mean(), "above_traffic_%": 100 * r["proxy"].mean(),
             "mean_peak_util": r["max_util"].mean(), "physical_overload_%": 100 * r["physical"].mean(),
-            "reroutes_per_step": r["rerouted"].mean(), "changes_per_step": r["changes"].mean(),
+            "flows_off_default_per_step": r["rerouted"].mean(), "changes_per_step": r["changes"].mean(),
             "stretch": float(np.nanmean(r["stretch"]))}
 
 
@@ -153,33 +153,33 @@ def block_ci(d, block=96, boot=2000, seed=0):
 
 
 def choose_trigger(val_grid, name, triggers, budget):
-    """Shared rule: least above-threshold traffic within the reroute budget; ties -> fewer reroutes."""
+    """Shared rule: least above-threshold traffic within the off-default-flow budget."""
     rows = [(trig, summary(val_grid[(name, trig, None)])) for trig in triggers]
-    ok = [(t, s) for t, s in rows if s["reroutes_per_step"] <= budget]
+    ok = [(t, s) for t, s in rows if s["flows_off_default_per_step"] <= budget]
     if not ok:
-        return min(rows, key=lambda r: r[1]["reroutes_per_step"])[0], False
-    best = min(ok, key=lambda r: (round(r[1]["above_traffic_%"], 6), r[1]["steps_above_%"], r[1]["reroutes_per_step"]))
+        return min(rows, key=lambda r: r[1]["flows_off_default_per_step"])[0], False
+    best = min(ok, key=lambda r: (round(r[1]["above_traffic_%"], 6), r[1]["steps_above_%"], r[1]["flows_off_default_per_step"]))
     return best[0], True
 
 
 def print_grid(title, grid, triggers, schemes):
     print(f"\n{title}")
-    head = f"{'trigger':<9}{'scheme':<11}{'steps>thr %':>12}{'traffic>thr %':>15}{'mean peak':>11}{'overload %':>12}{'reroutes':>10}"
+    head = f"{'trigger':<9}{'scheme':<11}{'steps>thr %':>12}{'traffic>thr %':>15}{'mean peak':>11}{'overload %':>12}{'off-default':>12}"
     print(head)
     s = summary(grid[("static", None, None)])
     print(f"{'-':<9}{'static':<11}{s['steps_above_%']:>12.3f}{s['above_traffic_%']:>15.4f}{s['mean_peak_util']:>11.3f}"
-          f"{s['physical_overload_%']:>12.4f}{s['reroutes_per_step']:>10.2f}")
+          f"{s['physical_overload_%']:>12.4f}{s['flows_off_default_per_step']:>12.2f}")
     for trig in triggers:
         for name in schemes:
             s = summary(grid[(name, trig, None)])
             print(f"{trig:<9.0%}{name:<11}{s['steps_above_%']:>12.3f}{s['above_traffic_%']:>15.4f}{s['mean_peak_util']:>11.3f}"
-                  f"{s['physical_overload_%']:>12.4f}{s['reroutes_per_step']:>10.2f}")
+                  f"{s['physical_overload_%']:>12.4f}{s['flows_off_default_per_step']:>12.2f}")
 
 
 def print_diffs(grid, trig_pairs, boot, block):
     """proactive minus reactive, per step, for the given (reactive_trigger, proactive_trigger) pairs."""
     print(f"\nproactive MINUS reactive (negative = proactive better), mean [95% block-bootstrap CI], block={block} steps")
-    print(f"{'reactive@':<11}{'proactive@':<12}{'steps>thr (pp)':>26}{'traffic>thr (pp)':>28}{'reroutes':>26}")
+    print(f"{'reactive@':<11}{'proactive@':<12}{'steps>thr (pp)':>26}{'traffic>thr (pp)':>28}{'off-default flows':>26}")
     rows = []
     for tr, tp in trig_pairs:
         a, b = grid[("proactive", tp, None)], grid[("reactive", tr, None)]
@@ -188,7 +188,7 @@ def print_diffs(grid, trig_pairs, boot, block):
             m, lo, hi = block_ci(scale * (a[key] - b[key]), block, boot)
             cells.append((m, lo, hi))
         rows.append({"reactive_trigger": tr, "proactive_trigger": tp,
-                     "d_steps_above_pp": cells[0], "d_above_traffic_pp": cells[1], "d_reroutes": cells[2]})
+                     "d_steps_above_pp": cells[0], "d_above_traffic_pp": cells[1], "d_flows_off_default": cells[2]})
         f = lambda c: f"{c[0]:+.3f} [{c[1]:+.3f}, {c[2]:+.3f}]"
         print(f"{tr:<11.0%}{tp:<12.0%}{f(cells[0]):>26}{f(cells[1]):>28}{f(cells[2]):>26}")
     return rows
@@ -258,6 +258,21 @@ def persistence_report(tgrid, sel, triggers, schemes, boot, block):
     return out
 
 
+def fixed_report(tgrid, triggers, fixed, boot, block):
+    """Section E: proactive minus reactive with the SAME hysteresis for both (removes tuning differences)."""
+    print("\n=== E. SAME hysteresis for both schemes: persistent proactive MINUS persistent reactive ===")
+    print("   negative = forecast better.  Identical persistence, so differences come from the input matrix only.")
+    print(f"{'trigger':<9}{'h':<6}" + "".join(f"{lab:>26}" for _, _, lab in PERSIST_METRICS))
+    rows = []
+    for h in fixed:
+        for trig in triggers:
+            a, b = tgrid[("proactive", trig, h)], tgrid[("reactive", trig, h)]
+            cells = {k: block_ci(sc * (a[k] - b[k]), block, boot) for k, sc, _ in PERSIST_METRICS}
+            print(f"{trig:<9.0%}{h:<6.2f}" + "".join(f"{_fmt(cells[k], 3):>26}" for k, _, _ in PERSIST_METRICS))
+            rows.append({"trigger": trig, "hysteresis": h, **cells})
+    return rows
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", required=True, help="folder with true/pred/last_observed _test.npy")
@@ -271,12 +286,16 @@ def main():
     ap.add_argument("--report-thr", type=float, default=0.70, help="utilisation level the 'above' metrics count")
     ap.add_argument("--triggers", type=float, nargs="+", default=[0.45, 0.55, 0.70],
                     help="controller trigger grid used by EVERY scheme")
-    ap.add_argument("--budget", type=float, default=3.0, help="max average flows rerouted per step allowed when selecting a trigger")
+    ap.add_argument("--budget", type=float, default=3.0,
+                    help="max average flows assigned to non-default paths per step when selecting a trigger; not route changes")
     ap.add_argument("--hybrid", action="store_true", help="also replay the hybrid (max of forecast and last matrix)")
     ap.add_argument("--persistence", action="store_true",
                     help="also replay with route persistence (hysteresis) and compare persistent reactive vs persistent proactive")
     ap.add_argument("--hysteresis", type=float, nargs="+", default=[0.10, 0.30, 0.50, 0.70],
                     help="hysteresis candidates; chosen per scheme and trigger on validation by one shared rule")
+    ap.add_argument("--fixed-hysteresis", type=float, nargs="*", default=[],
+                    help="sensitivity: also compare persistent proactive vs reactive with ONE hysteresis shared by both "
+                         "(e.g. 0.10 0.30), so the two schemes get identical persistence")
     ap.add_argument("--tol-steps", type=float, default=0.125, help="allowed extra steps>thr (pp) vs independent on validation")
     ap.add_argument("--tol-proxy", type=float, default=0.002, help="allowed extra above-thr traffic (pp) vs independent on validation")
     ap.add_argument("--max-stretch", type=float, default=1.02, help="max mean IGP cost stretch on validation")
@@ -291,7 +310,8 @@ def main():
     cap = _capacity_vector(np.array([g[u][v]["capacity_kbps"] for u, v in pt.edges]), pt.E)
     optimize_fn = optimize if args.optimizer == "minmax" else optimize_overflow
     schemes = ["reactive", "proactive", "oracle"] + (["hybrid"] if args.hybrid else [])
-    hysts = sorted(args.hysteresis) if args.persistence else []
+    sel_hysts = sorted(args.hysteresis) if args.persistence else []
+    hysts = sorted(set(sel_hysts) | set(args.fixed_hysteresis)) if args.persistence else []
     if args.persistence and not args.val_results:
         ap.error("--persistence needs --val-results (the hysteresis must be chosen on validation, not on test)")
     triggers = sorted(args.triggers)
@@ -312,7 +332,7 @@ def main():
             trig, feasible = choose_trigger(vgrid, name, triggers, args.budget)
             selected[name] = trig
             print(f"  selected on validation: {name:<9} -> trigger {trig:.0%}"
-                  + ("" if feasible else f"   (no trigger met the {args.budget:g} reroutes/step budget; took the fewest reroutes)"))
+                  + ("" if feasible else f"   (no trigger met the {args.budget:g} off-default-flows/step budget; took the fewest)"))
         report["validation_selected_triggers"] = selected
         if hysts:
             print("\n  persistence chosen on validation (rule: steps>thr <= independent+%.3fpp, traffic>thr <= independent+%.3fpp, stretch <= %.2f, then fewest route changes)"
@@ -321,7 +341,7 @@ def main():
                 if name == "oracle":
                     continue
                 for trig in triggers:
-                    h = choose_hysteresis(vgrid, name, trig, hysts, args.tol_steps, args.tol_proxy, args.max_stretch)
+                    h = choose_hysteresis(vgrid, name, trig, sel_hysts, args.tol_steps, args.tol_proxy, args.max_stretch)
                     persist_sel[(name, trig)] = h
                     sv = summary(vgrid[(name, trig, h)])
                     print(f"    {name:<9}@{trig:.0%}: h={'none' if h is None else f'{h:.2f}'}   val route changes/step {sv['changes_per_step']:.3f}")
@@ -338,21 +358,23 @@ def main():
     print("\n=== A. SAME trigger for reactive and proactive ===")
     report["same_trigger_diffs"] = print_diffs(tgrid, pairs, args.boot, args.block)
     if selected.get("reactive") is not None and selected.get("proactive") is not None:
-        print("\n=== B. Each scheme at the trigger chosen on validation (same rule, same reroute budget) ===")
+        print("\n=== B. Each scheme at the trigger chosen on validation (same rule, same off-default-flow budget) ===")
         sr, sp = selected["reactive"], selected["proactive"]
         for name, trig in (("reactive", sr), ("proactive", sp)):
             s = summary(tgrid[(name, trig, None)])
             print(f"  {name:<9}@{trig:.0%}: steps>thr {s['steps_above_%']:.3f}%  traffic>thr {s['above_traffic_%']:.4f}%  "
-                  f"mean peak {s['mean_peak_util']:.3f}  reroutes {s['reroutes_per_step']:.2f}")
+                  f"mean peak {s['mean_peak_util']:.3f}  off-default flows {s['flows_off_default_per_step']:.2f}")
         report["validation_selected_diffs"] = print_diffs(tgrid, [(sr, sp)], args.boot, args.block)
     if hysts:
         report["persistence"] = persistence_report(tgrid, persist_sel, triggers,
                                                    [n for n in schemes], args.boot, args.block)
+        if args.fixed_hysteresis:
+            report["fixed_hysteresis_diffs"] = fixed_report(tgrid, triggers, sorted(args.fixed_hysteresis), args.boot, args.block)
         report["persistence_selected"] = {f"{n}@{t}": h for (n, t), h in persist_sel.items()}
         print("\nEXPLORATORY: the test period was inspected during development, so these intervals describe this one "
               "period and are not confirmatory. Event counts are small; judge by the CI, not the point estimate.")
     print("\nRead it like this: if the interval for 'steps>thr' and 'traffic>thr' includes 0, the forecast made no "
-          "demonstrated difference to congestion; the reroutes column shows the cost of acting earlier.")
+          "demonstrated difference to congestion; off-default flows measure path occupancy, while route changes measure churn.")
 
     import os
     out = args.out or args.results
