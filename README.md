@@ -94,3 +94,35 @@ py train.py --data geant_final.npy --nodes 23 --window 12 --horizon 4 --times ge
 ```
 
 The script saves validation forecasts, exact last-observed matrices, and input histories. Full CPU training can be slow; use a PyTorch CUDA environment when available. Keep the chronological split and only use validation data to select model or controller settings.
+
+## NS-3 Network Simulation
+
+The project includes a C++ simulation for comparing baseline and proactive routing using GÉANT traffic forecasts.
+
+### Prerequisites
+- Git
+- A C++ compiler and CMake
+- Python 3
+- NS-3 with the required build dependencies
+
+### Setup
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/LakshmiShriyaa/comp_net2.git
+   cd comp_net2
+   ```
+
+2. Install NS-3 by following the official [NS-3 installation guide](https://www.nsnam.org/docs/installation/html/).
+
+3. Copy `ns3_source/geant-cnn-lstm-multiflow.cc` into the `scratch/` directory of your NS-3 installation.
+
+4. Ensure the required forecast and topology input files are available. Check the simulation source for the expected input paths and filenames.
+
+5. Configure and build NS-3 according to the installed version's instructions.
+
+6. Run the baseline and proactive simulations using the NS-3 run commands appropriate for your version and build configuration.
+
+### Existing Results
+The repository includes saved XML FlowMonitor outputs for the baseline and proactive simulations. See `PROJECT_RESULTS.md` for forecast metrics, routing evaluations, limitations, and reproducibility details.
+
+**Note:** Exact commands depend on the NS-3 version and build configuration. The saved results are provided for inspection without rerunning the simulations.
